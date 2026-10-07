@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conecta Agro — Monitoramento e Medições de Campo</title>
+  <meta name="description" content="Sistema de registro e consulta de medições agronômicas e observações de campo em pequenas e médias propriedades agrícolas.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System & Estilos da Aplicação -->
+  <link rel="stylesheet" href="design-system.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. CABEÇALHO SUPERIOR (TOPBAR)
+       ========================================================================= -->
+  <header class="ca-topbar" id="main-header">
+    <div class="ca-topbar__inner">
+      <div class="ca-brand-block">
+        <div class="ca-brand-logo" aria-hidden="true">🌱</div>
+        <div>
+          <h1 class="ca-brand-title">Conecta Agro</h1>
+          <p class="ca-brand-tagline">Raiz & Precisão • Monitoramento de Campo</p>
+        </div>
+      </div>
+
+      <div class="ca-topbar__meta">
+        <div class="ca-status-pill" title="Os dados são mantidos no navegador via LocalStorage">
+          <span class="ca-status-pill__dot"></span>
+          <span class="ca-status-pill__text">Modo Local Ativo</span>
+        </div>
+        <button id="btn-demo-seed" class="ca-btn ca-btn--outline ca-btn--sm" title="Restaura 4 medições fictícias para testes">
+          🔄 Restaurar Dados Demo
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       CONTEÚDO PRINCIPAL
+       ========================================================================= -->
+  <div class="ca-app-wrapper">
+
+    <!-- 2. FAIXA DE MÉTRICAS RÁPIDAS (KPIS DE CAMPO) -->
+    <section class="ca-kpi-section" aria-label="Métricas Rápidas de Campo">
+      <div class="ca-kpi-grid">
+        
+        <!-- Total de Medições -->
+        <div class="ca-kpi-card" id="kpi-card-total">
+          <div class="ca-kpi-icon ca-kpi-icon--green">🌾</div>
+          <div class="ca-kpi-content">
+            <span class="ca-kpi-label">Total de Medições</span>
+            <div class="ca-kpi-value" id="kpi-total-val">0</div>
+          </div>
+        </div>
+
+        <!-- Umidade Média do Solo -->
+        <div class="ca-kpi-card" id="kpi-card-moisture">
+          <div class="ca-kpi-icon ca-kpi-icon--blue">💧</div>
+          <div class="ca-kpi-content">
+            <span class="ca-kpi-label">Umidade Média Solo</span>
+            <div class="ca-kpi-value" id="kpi-moisture-val">--%</div>
+          </div>
+        </div>
+
+        <!-- Temperatura Média -->
+        <div class="ca-kpi-card" id="kpi-card-temp">
+          <div class="ca-kpi-icon ca-kpi-icon--amber">🌡️</div>
+          <div class="ca-kpi-content">
+            <span class="ca-kpi-label">Temp. Média</span>
+            <div class="ca-kpi-value" id="kpi-temp-val">--°C</div>
+          </div>
+        </div>
+
+        <!-- Talhões com Alerta Fitossanitário -->
+        <div class="ca-kpi-card" id="kpi-card-alerts">
+          <div class="ca-kpi-icon ca-kpi-icon--red">⚠️</div>
+          <div class="ca-kpi-content">
+            <span class="ca-kpi-label">Talhões em Alerta</span>
+            <div class="ca-kpi-value" id="kpi-alerts-val">0</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. ÁREA DE TRABALHO PRINCIPAL (LAYOUT EM DUAS COLUNAS) -->
+    <main class="ca-main-grid" id="main-content">
+
+      <!-- =====================================================================
+           COLUNA 1: FORMULÁRIO DE REGISTRO DE CAMPO
+           ===================================================================== -->
+      <section class="ca-card ca-form-panel" aria-labelledby="form-title">
+        <header class="ca-card__header">
+          <div class="ca-card__header-icon">📝</div>
+          <div>
+            <h2 id="form-title" class="ca-card__title">Nova Medição de Campo</h2>
+            <p class="ca-card__subtitle">Registre as observações da ronda fitossanitária e do solo.</p>
+          </div>
+        </header>
+
+        <form id="form-measurement" novalidate>
+
+          <!-- Linha 1: Data/Hora e Talhão -->
+          <div class="ca-grid-2">
+            <div class="ca-form-group">
+              <label for="input-datetime" class="ca-label">
+                Data e Hora da Coleta <span class="ca-required">*</span>
+              </label>
+              <input 
+                type="datetime-local" 
+                id="input-datetime" 
+                name="dateTime" 
+                class="ca-input" 
+                required
+              >
+            </div>
+
+            <div class="ca-form-group">
+              <label for="input-field" class="ca-label">
+                Talhão / Lote <span class="ca-required">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="input-field" 
+                name="field" 
+                class="ca-input" 
+                placeholder="Ex: Talhão 04 - Setor Norte" 
+                list="fields-suggestions" 
+                required
+              >
+              <datalist id="fields-suggestions">
+                <option value="Talhão 01 - Baixada">
+                <option value="Talhão 02 - Encosta Leste">
+                <option value="Talhão 03 - Pivô Central">
+                <option value="Talhão 04 - Setor Norte">
+                <option value="Talhão 08 - Colina Sul">
+              </datalist>
+            </div>
+          </div>
+
+          <!-- Linha 2: Cultura e Umidade do Solo -->
+          <div class="ca-grid-2">
+            <div class="ca-form-group">
+              <label for="input-crop" class="ca-label">
+                Cultura / Variedade <span class="ca-required">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="input-crop" 
+                name="crop" 
+                class="ca-input" 
+                placeholder="Ex: Milho Safrinha DKB" 
+                list="crops-suggestions" 
+                required
+              >
+              <datalist id="crops-suggestions">
+                <option value="Milho Safrinha DKB">
+                <option value="Soja Intacta BMX">
+                <option value="Café Arábica Catuaí">
+                <option value="Feijão Carioca">
+                <option value="Algodão DP 1744">
+              </datalist>
+            </div>
+
+            <div class="ca-form-group">
+              <label for="input-moisture" class="ca-label">
+                Umidade do Solo (%) <span class="ca-required">*</span>
+              </label>
+              <div class="ca-input-affix">
+                <input 
+                  type="number" 
+                  id="input-moisture" 
+                  name="soilMoisture" 
+                  class="ca-input" 
+                  placeholder="0 a 100" 
+                  min="0" 
+                  max="100" 
+                  step="0.1" 
+                  required
+                >
+                <span class="ca-affix">%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Linha 3: Temperatura e Status de Pragas -->
+          <div class="ca-grid-2">
+            <div class="ca-form-group">
+              <label for="input-temp" class="ca-label">
+                Temperatura (°C) <span class="ca-required">*</span>
+              </label>
+              <div class="ca-input-affix">
+                <input 
+                  type="number" 
+                  id="input-temp" 
+                  name="temperature" 
+                  class="ca-input" 
+                  placeholder="Ex: 29.5" 
+                  min="-10" 
+                  max="60" 
+                  step="0.1" 
+                  required
+                >
+                <span class="ca-affix">°C</span>
+              </div>
+            </div>
+
+            <div class="ca-form-group">
+              <label class="ca-label" id="label-pest-status">
+                Status de Pragas / Risco <span class="ca-required">*</span>
+              </label>
+              
+              <!-- Segmented Selection para Pragas -->
+              <div class="ca-status-selector" role="radiogroup" aria-labelledby="label-pest-status">
+                <label class="ca-radio-chip ca-radio-chip--safe">
+                  <input type="radio" name="pestStatus" value="safe" checked>
+                  <span>🟢 Normal</span>
+                </label>
+                <label class="ca-radio-chip ca-radio-chip--warn">
+                  <input type="radio" name="pestStatus" value="warn">
+                  <span>🟡 Atenção</span>
+                </label>
+                <label class="ca-radio-chip ca-radio-chip--alert">
+                  <input type="radio" name="pestStatus" value="alert">
+                  <span>🟠 Alerta</span>
+                </label>
+                <label class="ca-radio-chip ca-radio-chip--danger">
+                  <input type="radio" name="pestStatus" value="danger">
+                  <span>🔴 Crítico</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Linha 4: Observações e Ações Recomendadas -->
+          <div class="ca-form-group">
+            <label for="input-observations" class="ca-label">
+              Observações e Ações de Manejo
+            </label>
+            <textarea 
+              id="input-observations" 
+              name="observations" 
+              class="ca-textarea" 
+              placeholder="Descreva sintomas observados no talhão, estágio vegetativo, incidência de lagartas, percevejos, ferrugem ou necessidade de irrigação..."
+            ></textarea>
+            <span class="ca-field-hint">Opcional. Auxilia na tomada de decisão da equipe técnica.</span>
+          </div>
+
+          <!-- Botões de Ação do Formulário -->
+          <div class="ca-form-actions">
+            <button type="submit" id="btn-submit-measurement" class="ca-btn ca-btn--primary">
+              💾 Salvar Medição
+            </button>
+            <button type="reset" id="btn-reset-form" class="ca-btn ca-btn--secondary">
+              🔄 Limpar
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- =====================================================================
+           COLUNA 2: PAINEL DE HISTÓRICO E CONSULTA
+           ===================================================================== -->
+      <section class="ca-card ca-records-panel" aria-labelledby="records-title">
+        <header class="ca-card__header ca-records-header">
+          <div>
+            <h2 id="records-title" class="ca-card__title">Histórico de Medições</h2>
+            <p class="ca-card__subtitle" id="records-counter-text">Carregando histórico...</p>
+          </div>
+        </header>
+
+        <!-- Barra de Filtros e Busca Rápida -->
+        <div class="ca-filter-bar">
+          <div class="ca-search-box">
+            <span class="ca-search-icon" aria-hidden="true">🔍</span>
+            <input 
+              type="text" 
+              id="search-input" 
+              class="ca-input ca-input--search" 
+              placeholder="Buscar por talhão ou cultura..." 
+              aria-label="Buscar histórico por talhão ou cultura"
+            >
+            <button type="button" id="btn-clear-search" class="ca-search-clear" style="display: none;" title="Limpar busca">✕</button>
+          </div>
+
+          <div class="ca-filter-status-box">
+            <select id="filter-status-select" class="ca-select ca-select--filter" aria-label="Filtrar por status fitossanitário">
+              <option value="all">Todos os Status</option>
+              <option value="safe">🟢 Apenas Normais</option>
+              <option value="warn">🟡 Apenas Atenção</option>
+              <option value="alert">🟠 Apenas Alerta</option>
+              <option value="danger">🔴 Apenas Críticos</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Lista Dinâmica de Registros de Campo -->
+        <div id="records-container" class="ca-records-list" role="region" aria-live="polite">
+          <!-- Os cards de medição serão inseridos dinamicamente pelo app.js -->
+        </div>
+
+        <!-- Estado Vazio (Empty State) -->
+        <div id="empty-state" class="ca-empty-state" style="display: none;">
+          <div class="ca-empty-state__icon">🌾</div>
+          <h3 class="ca-empty-state__title">Nenhuma medição encontrada</h3>
+          <p class="ca-empty-state__text" id="empty-state-message">
+            Não há registros compatíveis com os filtros selecionados. Tente ajustar a busca ou registrar uma nova medição.
+          </p>
+          <button type="button" id="btn-empty-reset" class="ca-btn ca-btn--secondary ca-btn--sm">
+            Limpar Filtros de Busca
+          </button>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- =========================================================================
+         RODAPÉ INSTITUCIONAL
+         ========================================================================= -->
+    <footer class="ca-footer">
+      <div class="ca-footer__inner">
+        <p>
+          <strong>Conecta Agro</strong> — Protótipo de Registro de Medições e Observações de Campo.
+        </p>
+        <p class="ca-footer__sub">
+          Interface executada localmente • Dados persistidos no navegador via <code>LocalStorage</code> • Sem custos de infraestrutura.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Contêiner de Notificações Toast -->
+  <div id="toast-container" class="ca-toast-container" aria-live="assertive"></div>
+
+  <!-- Script Principal da Lógica -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+/* ==========================================================================
+   CONECTA AGRO — DESIGN SYSTEM (RAIZ & PRECISÃO)
+   Tokens CSS, Variáveis Globais e Componentes Base
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Marca Primária (Forest & Sprout) */
+  --ca-brand-deep: #0D2818;
+  --ca-brand-primary: #164E2E;
+  --ca-brand-hover: #227C4B;
+  --ca-brand-accent: #2EC475;
+  --ca-brand-light: #EAF7EE;
+
+  /* Cores da Terra & Safra */
+  --ca-earth-rich: #6E4032;
+  --ca-earth-terra: #A85A3F;
+  --ca-harvest-gold: #D97706;
+  --ca-harvest-light: #FEF3C7;
+
+  /* Neutros & Superfícies */
+  --ca-text-main: #111815;
+  --ca-text-muted: #4B554F;
+  --ca-text-light: #808B84;
+  --ca-border-light: #E2E6E2;
+  --ca-border-medium: #CBD2CB;
+  --ca-bg-app: #F7F9F6;
+  --ca-bg-surface: #FFFFFF;
+  --ca-bg-subtle: #EFF2EE;
+
+  /* Semântica e Alertas */
+  --ca-status-safe: #15803D;
+  --ca-status-safe-bg: #DCFCE7;
+  --ca-status-safe-border: #86EFAC;
+
+  --ca-status-warn: #B45309;
+  --ca-status-warn-bg: #FEF9C3;
+  --ca-status-warn-border: #FDE047;
+
+  --ca-status-alert: #C2410C;
+  --ca-status-alert-bg: #FFEDD5;
+  --ca-status-alert-border: #FDBA74;
+
+  --ca-status-danger: #B91C1C;
+  --ca-status-danger-bg: #FEE2E2;
+  --ca-status-danger-border: #FCA5A5;
+
+  --ca-status-hydro: #0284C7;
+  --ca-status-hydro-bg: #E0F2FE;
+  --ca-status-hydro-border: #7DD3FC;
+
+  /* Tipografia */
+  --ca-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --ca-font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+
+  /* Espaçamentos */
+  --ca-space-xxs: 4px;
+  --ca-space-xs: 8px;
+  --ca-space-sm: 12px;
+  --ca-space-md: 16px;
+  --ca-space-lg: 24px;
+  --ca-space-xl: 32px;
+  --ca-space-2xl: 48px;
+
+  /* Bordas e Raios */
+  --ca-radius-sm: 8px;
+  --ca-radius-md: 14px;
+  --ca-radius-lg: 20px;
+  --ca-radius-full: 9999px;
+
+  /* Sombras */
+  --ca-shadow-sm: 0 1px 3px rgba(17, 24, 21, 0.05), 0 1px 2px rgba(17, 24, 21, 0.04);
+  --ca-shadow-md: 0 6px 16px -2px rgba(22, 78, 46, 0.08), 0 3px 6px -2px rgba(17, 24, 21, 0.04);
+  --ca-shadow-lg: 0 14px 30px -4px rgba(13, 40, 24, 0.12), 0 6px 12px -3px rgba(17, 24, 21, 0.06);
+
+  /* Transições */
+  --ca-transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--ca-font-sans);
+  background-color: var(--ca-bg-app);
+  color: var(--ca-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   COMPONENTES: BADGES & STATUS CHIPS
+   ========================================================================== */
+.ca-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--ca-radius-full);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border: 1px solid transparent;
+}
+
+.ca-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.ca-badge--safe {
+  background-color: var(--ca-status-safe-bg);
+  color: var(--ca-status-safe);
+  border-color: var(--ca-status-safe-border);
+}
+.ca-badge--safe::before { background-color: var(--ca-status-safe); }
+
+.ca-badge--warn {
+  background-color: var(--ca-status-warn-bg);
+  color: var(--ca-status-warn);
+  border-color: var(--ca-status-warn-border);
+}
+.ca-badge--warn::before { background-color: var(--ca-status-warn); }
+
+.ca-badge--alert {
+  background-color: var(--ca-status-alert-bg);
+  color: var(--ca-status-alert);
+  border-color: var(--ca-status-alert-border);
+}
+.ca-badge--alert::before { background-color: var(--ca-status-alert); }
+
+.ca-badge--danger {
+  background-color: var(--ca-status-danger-bg);
+  color: var(--ca-status-danger);
+  border-color: var(--ca-status-danger-border);
+}
+.ca-badge--danger::before {
+  background-color: var(--ca-status-danger);
+  box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.7);
+  animation: ca-pulse 1.8s infinite;
+}
+
+@keyframes ca-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(185, 28, 28, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(185, 28, 28, 0); }
+}
+
+/* ==========================================================================
+   COMPONENTES: BOTÕES (BUTTONS)
+   ========================================================================== */
+.ca-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  min-height: 44px;
+  font-family: var(--ca-font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: var(--ca-radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--ca-transition);
+  text-decoration: none;
+}
+
+.ca-btn--primary {
+  background-color: var(--ca-brand-primary);
+  color: #FFFFFF;
+  box-shadow: var(--ca-shadow-sm);
+}
+.ca-btn--primary:hover {
+  background-color: var(--ca-brand-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--ca-shadow-md);
+}
+.ca-btn--primary:active {
+  transform: translateY(0);
+}
+
+.ca-btn--secondary {
+  background-color: var(--ca-bg-subtle);
+  color: var(--ca-text-main);
+  border-color: var(--ca-border-light);
+}
+.ca-btn--secondary:hover {
+  background-color: #E3E7E2;
+  border-color: var(--ca-border-medium);
+}
+
+.ca-btn--outline {
+  background-color: transparent;
+  color: var(--ca-brand-primary);
+  border-color: var(--ca-brand-primary);
+}
+.ca-btn--outline:hover {
+  background-color: var(--ca-brand-light);
+}
+
+/* ==========================================================================
+   COMPONENTES: CARDS DE MÉTRICA (KPIs)
+   ========================================================================== */
+.ca-kpi-card {
+  background: var(--ca-bg-surface);
+  border: 1px solid var(--ca-border-light);
+  border-radius: var(--ca-radius-md);
+  padding: var(--ca-space-lg);
+  box-shadow: var(--ca-shadow-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ca-space-md);
+  transition: var(--ca-transition);
+}
+.ca-kpi-card:hover {
+  box-shadow: var(--ca-shadow-md);
+  border-color: var(--ca-border-medium);
+}
+
+.ca-kpi-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--ca-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+.ca-kpi-icon--green { background: var(--ca-brand-light); color: var(--ca-brand-primary); }
+.ca-kpi-icon--blue  { background: var(--ca-status-hydro-bg); color: var(--ca-status-hydro); }
+.ca-kpi-icon--amber { background: var(--ca-status-warn-bg); color: var(--ca-status-warn); }
+.ca-kpi-icon--red   { background: var(--ca-status-danger-bg); color: var(--ca-status-danger); }
+
+.ca-kpi-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--ca-text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.ca-kpi-value {
+  font-family: var(--ca-font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ca-text-main);
+  line-height: 1.1;
+}
+
+/* ==========================================================================
+   COMPONENTES: FORMULÁRIOS DE CAMPO
+   ========================================================================== */
+.ca-form-group {
+  margin-bottom: var(--ca-space-md);
+}
+
+.ca-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ca-text-main);
+  margin-bottom: 6px;
+}
+
+.ca-input, .ca-select, .ca-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  min-height: 44px;
+  font-family: var(--ca-font-sans);
+  font-size: 0.9375rem;
+  color: var(--ca-text-main);
+  background-color: var(--ca-bg-surface);
+  border: 1px solid var(--ca-border-light);
+  border-radius: var(--ca-radius-sm);
+  transition: var(--ca-transition);
+  outline: none;
+}
+
+.ca-input:focus, .ca-select:focus, .ca-textarea:focus {
+  border-color: var(--ca-brand-primary);
+  box-shadow: 0 0 0 3px rgba(22, 78, 46, 0.12);
+}
+
+.ca-textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+/* ==========================================================================
+   COMPONENTES: CARD DE REGISTRO DE CAMPO
+   ========================================================================== */
+.ca-record-card {
+  background: var(--ca-bg-surface);
+  border: 1px solid var(--ca-border-light);
+  border-radius: var(--ca-radius-md);
+  padding: var(--ca-space-md) var(--ca-space-lg);
+  box-shadow: var(--ca-shadow-sm);
+  transition: var(--ca-transition);
+}
+.ca-record-card:hover {
+  border-color: var(--ca-brand-primary);
+  box-shadow: var(--ca-shadow-md);
+}

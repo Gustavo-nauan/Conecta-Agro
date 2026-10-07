@@ -1,0 +1,626 @@
+/* ==========================================================================
+   CONECTA AGRO — ESTILOS PRINCIPAIS DA APLICAÇÃO (style.css)
+   Consome os tokens do Design System (Raiz & Precisão)
+   ========================================================================== */
+
+@import url('design-system.css');
+
+/* Layout Geral & Container */
+.ca-app-wrapper {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+/* ==========================================================================
+   1. CABEÇALHO SUPERIOR (TOPBAR)
+   ========================================================================== */
+.ca-topbar {
+  background: linear-gradient(135deg, #0D2818 0%, #164E2E 70%, #1B5E3C 100%);
+  color: #FFFFFF;
+  border-bottom: 3px solid var(--ca-brand-accent);
+  box-shadow: var(--ca-shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.ca-topbar__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ca-brand-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ca-brand-logo {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--ca-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ca-brand-title {
+  font-family: var(--ca-font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.ca-brand-tagline {
+  font-size: 0.8125rem;
+  color: #C3DFC9;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+.ca-topbar__meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ca-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--ca-radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #EAF7EE;
+  letter-spacing: 0.02em;
+}
+
+.ca-status-pill__dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--ca-brand-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--ca-brand-accent);
+}
+
+.ca-btn--sm {
+  padding: 6px 14px;
+  min-height: 36px;
+  font-size: 0.8125rem;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.ca-btn--sm:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #FFFFFF;
+}
+
+/* ==========================================================================
+   2. FAIXA DE KPIS DE CAMPO
+   ========================================================================== */
+.ca-kpi-section {
+  margin-bottom: 28px;
+}
+
+.ca-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.ca-kpi-card {
+  background: var(--ca-bg-surface);
+  border: 1px solid var(--ca-border-light);
+  border-radius: var(--ca-radius-md);
+  padding: 18px 20px;
+  box-shadow: var(--ca-shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: var(--ca-transition);
+}
+.ca-kpi-card:hover {
+  border-color: var(--ca-brand-hover);
+  box-shadow: var(--ca-shadow-md);
+  transform: translateY(-2px);
+}
+
+.ca-kpi-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--ca-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.ca-kpi-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ca-text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.ca-kpi-value {
+  font-family: var(--ca-font-display);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--ca-text-main);
+  line-height: 1.1;
+}
+
+/* ==========================================================================
+   3. GRID PRINCIPAL (LAYOUT EM DUAS COLUNAS)
+   ========================================================================== */
+.ca-main-grid {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1080px) {
+  .ca-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ca-card {
+  background: var(--ca-bg-surface);
+  border: 1px solid var(--ca-border-light);
+  border-radius: var(--ca-radius-lg);
+  box-shadow: var(--ca-shadow-sm);
+  padding: 24px;
+}
+
+.ca-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ca-border-light);
+}
+
+.ca-card__header-icon {
+  font-size: 1.5rem;
+}
+
+.ca-card__title {
+  font-family: var(--ca-font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ca-brand-deep);
+  line-height: 1.2;
+}
+
+.ca-card__subtitle {
+  font-size: 0.8125rem;
+  color: var(--ca-text-muted);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   4. FORMULÁRIO DE MEDIÇÃO DE CAMPO
+   ========================================================================== */
+.ca-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 520px) {
+  .ca-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ca-required {
+  color: var(--ca-status-danger);
+  font-weight: 700;
+}
+
+.ca-input-affix {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ca-input-affix .ca-input {
+  padding-right: 42px;
+}
+
+.ca-affix {
+  position: absolute;
+  right: 12px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ca-text-muted);
+  pointer-events: none;
+}
+
+/* Seletor Segmentado de Status de Pragas */
+.ca-status-selector {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.ca-radio-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  min-height: 44px;
+  border: 1px solid var(--ca-border-light);
+  border-radius: var(--ca-radius-sm);
+  background: var(--ca-bg-subtle);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ca-text-main);
+  cursor: pointer;
+  transition: var(--ca-transition);
+  user-select: none;
+}
+
+.ca-radio-chip input[type="radio"] {
+  display: none;
+}
+
+.ca-radio-chip:hover {
+  background: #E8ECE7;
+  border-color: var(--ca-border-medium);
+}
+
+.ca-radio-chip:has(input:checked) {
+  border-width: 2px;
+}
+
+.ca-radio-chip--safe:has(input:checked) {
+  background: var(--ca-status-safe-bg);
+  color: var(--ca-status-safe);
+  border-color: var(--ca-status-safe);
+}
+
+.ca-radio-chip--warn:has(input:checked) {
+  background: var(--ca-status-warn-bg);
+  color: var(--ca-status-warn);
+  border-color: var(--ca-status-warn);
+}
+
+.ca-radio-chip--alert:has(input:checked) {
+  background: var(--ca-status-alert-bg);
+  color: var(--ca-status-alert);
+  border-color: var(--ca-status-alert);
+}
+
+.ca-radio-chip--danger:has(input:checked) {
+  background: var(--ca-status-danger-bg);
+  color: var(--ca-status-danger);
+  border-color: var(--ca-status-danger);
+}
+
+.ca-field-hint {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ca-text-light);
+  margin-top: 4px;
+}
+
+.ca-form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.ca-form-actions .ca-btn {
+  flex: 1;
+}
+
+/* ==========================================================================
+   5. PAINEL DE HISTÓRICO & FILTROS
+   ========================================================================== */
+.ca-records-header {
+  justify-content: space-between;
+}
+
+.ca-filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 640px) {
+  .ca-filter-bar {
+    flex-direction: column;
+  }
+}
+
+.ca-search-box {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.ca-search-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 0.9375rem;
+  color: var(--ca-text-muted);
+  pointer-events: none;
+}
+
+.ca-input--search {
+  padding-left: 38px;
+  padding-right: 36px;
+}
+
+.ca-search-clear {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--ca-text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px;
+}
+.ca-search-clear:hover {
+  color: var(--ca-text-main);
+}
+
+.ca-select--filter {
+  min-width: 180px;
+  cursor: pointer;
+}
+
+/* Lista de Cards de Medição */
+.ca-records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ca-record-item {
+  background: #FFFFFF;
+  border: 1px solid var(--ca-border-light);
+  border-radius: var(--ca-radius-md);
+  padding: 16px 20px;
+  box-shadow: var(--ca-shadow-sm);
+  transition: var(--ca-transition);
+  animation: caSlideUp 0.25s ease-out;
+  position: relative;
+}
+
+@keyframes caSlideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ca-record-item:hover {
+  border-color: var(--ca-brand-primary);
+  box-shadow: var(--ca-shadow-md);
+}
+
+.ca-record-item--danger {
+  border-left: 5px solid var(--ca-status-danger);
+}
+.ca-record-item--alert {
+  border-left: 5px solid var(--ca-status-alert);
+}
+.ca-record-item--warn {
+  border-left: 5px solid var(--ca-status-warn);
+}
+.ca-record-item--safe {
+  border-left: 5px solid var(--ca-status-safe);
+}
+
+.ca-record-item__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ca-record-item__field {
+  font-family: var(--ca-font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ca-brand-deep);
+}
+
+.ca-record-item__crop {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ca-earth-terra);
+  margin-top: 2px;
+}
+
+.ca-record-metrics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ca-metric-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--ca-bg-subtle);
+  border-radius: var(--ca-radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.ca-metric-chip--hydro {
+  color: var(--ca-status-hydro);
+  background: var(--ca-status-hydro-bg);
+}
+
+.ca-metric-chip--temp {
+  color: var(--ca-earth-rich);
+  background: #F8EDE9;
+}
+
+.ca-record-obs-box {
+  background: var(--ca-harvest-light);
+  border-left: 3px solid var(--ca-harvest-gold);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.8125rem;
+  color: #4A3A1F;
+  margin-bottom: 12px;
+  line-height: 1.45;
+}
+
+.ca-record-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--ca-text-muted);
+  border-top: 1px dashed var(--ca-border-light);
+  padding-top: 10px;
+}
+
+.ca-btn-delete {
+  background: none;
+  border: none;
+  color: var(--ca-text-light);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--ca-radius-sm);
+  transition: var(--ca-transition);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ca-btn-delete:hover {
+  background: var(--ca-status-danger-bg);
+  color: var(--ca-status-danger);
+}
+
+/* ==========================================================================
+   6. EMPTY STATE
+   ========================================================================== */
+.ca-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  background: var(--ca-bg-subtle);
+  border: 1px dashed var(--ca-border-medium);
+  border-radius: var(--ca-radius-md);
+  margin-top: 12px;
+}
+
+.ca-empty-state__icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.ca-empty-state__title {
+  font-family: var(--ca-font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ca-text-main);
+  margin-bottom: 6px;
+}
+
+.ca-empty-state__text {
+  font-size: 0.875rem;
+  color: var(--ca-text-muted);
+  max-width: 400px;
+  margin: 0 auto 16px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   7. SISTEMA DE NOTIFICAÇÕES (TOAST)
+   ========================================================================== */
+.ca-toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 380px;
+  pointer-events: none;
+}
+
+.ca-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: #FFFFFF;
+  border-radius: var(--ca-radius-md);
+  box-shadow: var(--ca-shadow-lg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ca-text-main);
+  border-left: 5px solid var(--ca-brand-primary);
+  animation: caToastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s ease;
+}
+
+.ca-toast--success {
+  border-left-color: var(--ca-status-safe);
+}
+.ca-toast--error {
+  border-left-color: var(--ca-status-danger);
+}
+.ca-toast--info {
+  border-left-color: var(--ca-status-hydro);
+}
+
+@keyframes caToastIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   8. RODAPÉ
+   ========================================================================== */
+.ca-footer {
+  margin-top: 48px;
+  border-top: 1px solid var(--ca-border-light);
+  padding-top: 24px;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--ca-text-muted);
+}
+
+.ca-footer__sub {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--ca-text-light);
+}
