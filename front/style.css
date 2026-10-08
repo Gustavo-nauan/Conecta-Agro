@@ -1,426 +1,642 @@
 /* ==========================================================================
-   CONECTA AGRO — ESTILOS DA APLICAÇÃO (ARVA THEME)
+   CONECTA AGRO — ESTILOS DA APLICAÇÃO
+   Utiliza os tokens do design-system.css (Vellum & Forest)
    ========================================================================== */
 
+/* --- Reset e importação do Design System --- */
 @import url('../design-system.css');
 
 /* ==========================================================================
-   BASE & LAYOUT
+   SISTEMA DE TELAS (Navegação SPA)
+   Apenas uma tela é visível por vez.
    ========================================================================== */
-.arva-app {
-  background-color: var(--color-bone);
+.tela {
+  display: none;
   min-height: 100vh;
 }
-
-.arva-container {
-  max-width: var(--page-max-width, 1200px);
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
-
-/* ==========================================================================
-   HEADER
-   ========================================================================== */
-.arva-header {
-  background-color: var(--color-forest-ink);
-  color: var(--color-pure-white);
-  padding: 0 40px;
-  height: 70px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-}
-
-.arva-header__inner {
-  width: 100%;
-  max-width: var(--page-max-width, 1200px);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.arva-brand {
-  font-family: var(--font-reckless);
-  font-size: 24px;
-  color: var(--color-pure-white);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.arva-brand__icon {
-  color: var(--color-vivid-lime);
-}
-
-.arva-brand__sub {
-  font-family: var(--font-inter);
-  font-size: 14px;
-  color: var(--color-moss);
-  margin-left: 6px;
-  font-weight: 400;
-}
-
-.arva-header__actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.arva-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-inter);
-  font-size: 13px;
-  color: var(--color-moss);
-}
-
-.arva-status__dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--color-vivid-lime);
-  border-radius: 50%;
-}
-
-/* ==========================================================================
-   KPI QUILTED CARDS
-   ========================================================================== */
-.arva-section {
-  margin-bottom: 50px;
-}
-
-.arva-kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-}
-
-.arva-card {
-  border-radius: var(--radius-cards);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.quilt-sky { background-color: var(--color-sky-card); }
-.quilt-peach { background-color: var(--color-peach-card); }
-.quilt-sage { background-color: var(--color-sage-card); }
-.quilt-bone { background-color: var(--color-ash-gray); }
-
-.kpi-header {
-  margin-bottom: 20px;
-}
-.kpi-icon {
-  font-size: 24px;
-}
-
-.kpi-value {
-  font-family: var(--font-reckless);
-  font-size: 45px;
-  line-height: 1;
-  color: var(--color-charcoal);
-  margin-bottom: 8px;
-}
-
-.kpi-label {
-  font-family: var(--font-inter);
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-graphite);
-}
-
-/* ==========================================================================
-   ÁREA PRINCIPAL (2 COLUNAS)
-   ========================================================================== */
-.arva-main-grid {
-  display: grid;
-  grid-template-columns: 480px 1fr;
-  gap: 40px;
-}
-
-@media (max-width: 1024px) {
-  .arva-main-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.arva-panel {
-  background-color: var(--color-pure-white);
-  border-radius: var(--radius-cards);
-  padding: 32px;
-}
-
-.panel-header {
-  margin-bottom: 30px;
-}
-
-.panel-title {
-  font-family: var(--font-reckless);
-  font-size: var(--text-heading-sm);
-  color: var(--color-charcoal);
-  line-height: 1.2;
-}
-
-.panel-subtitle {
-  font-family: var(--font-inter);
-  font-size: 15px;
-  color: var(--color-pewter);
-  margin-top: 6px;
-}
-
-/* ==========================================================================
-   FORMULÁRIOS & INPUTS (PILL FORMAT)
-   ========================================================================== */
-.arva-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.form-label {
+.tela.ativa {
   display: block;
-  font-family: var(--font-inter);
+}
+
+/* ==========================================================================
+   MARQUEE (Faixa animada no topo da tela Início)
+   ========================================================================== */
+.marquee-strip {
+  background-color: var(--color-vivid-lime);
+  height: 36px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: var(--hairline);
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
   font-size: 13px;
   font-weight: 600;
-  color: var(--color-graphite);
-  margin-bottom: 8px;
-}
-.req { color: #d94b4b; }
-
-.pill-input {
-  width: 100%;
-  border: 1px solid var(--color-moss);
-  border-radius: var(--radius-inputs);
-  padding: 12px 20px;
-  font-family: var(--font-inter);
-  font-size: 15px;
-  color: var(--color-charcoal);
-  background-color: var(--color-pure-white);
-  outline: none;
-  transition: border-color 0.2s;
-}
-.pill-input:focus {
-  border-color: var(--color-forest-ink);
+  color: var(--color-forest-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-.form-textarea {
-  min-height: 100px;
-  resize: vertical;
-  border-radius: 20px; /* Um pouco menos extremo para áreas de texto grandes */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.input-affix {
-  position: relative;
-}
-.affix-text {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--font-inter);
-  font-size: 13px;
-  color: var(--color-pewter);
-  pointer-events: none;
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 48px;
 }
 
-/* Segmented Pills (Radio) */
-.segmented-pills {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-}
-
-.pill-radio {
+/* ==========================================================================
+   TELA INÍCIO
+   ========================================================================== */
+.inicio-conteudo {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-moss);
-  border-radius: var(--radius-inputs);
-  padding: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.pill-radio input { display: none; }
-.pill-radio:hover { background-color: var(--color-bone); }
-
-.pill-radio:has(input:checked) {
-  border-width: 2px;
-}
-.pill-safe:has(input:checked) { background: #dcfce7; border-color: #15803d; color: #15803d; }
-.pill-warn:has(input:checked) { background: #fef9c3; border-color: #b45309; color: #b45309; }
-.pill-alert:has(input:checked) { background: #ffedd5; border-color: #c2410c; color: #c2410c; }
-.pill-danger:has(input:checked) { background: #fee2e2; border-color: #b91c1c; color: #b91c1c; }
-
-.form-actions {
-  display: flex;
-  gap: 16px;
-  margin-top: 10px;
+  min-height: calc(100vh - 36px); /* descontar marquee */
+  padding: 40px 24px;
+  text-align: center;
 }
 
-/* ==========================================================================
-   HISTÓRICO & FILTROS
-   ========================================================================== */
-.filter-bar {
-  display: flex;
-  gap: 16px;
+.display-titulo {
+  font-family: var(--font-display);
+  font-size: 100px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--color-forest-ink);
   margin-bottom: 24px;
-}
-.search-box {
-  position: relative;
-  flex: 1;
-}
-.btn-clear {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-pewter);
+  font-weight: 300;
 }
 
-.select-filter {
-  max-width: 180px;
+.inicio-descricao {
+  font-size: var(--text-body-lg);
+  color: var(--color-aged-ink);
+  max-width: 500px;
+  margin-bottom: 48px;
+  line-height: 1.6;
 }
 
-.records-list {
+.inicio-acoes {
   display: flex;
-  flex-direction: column;
   gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
-/* Compatibilidade com o app.js original que insere cards */
-.ca-record-item {
-  border: 1px solid var(--color-moss);
-  border-radius: var(--radius-cards);
-  padding: 24px;
-  background-color: var(--color-pure-white);
+.btn-grande {
+  padding: 16px 36px;
+  font-size: 16px;
 }
 
-.ca-record-item__field {
-  font-family: var(--font-reckless);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-charcoal);
-}
-
-.ca-record-item__crop {
-  font-family: var(--font-inter);
-  font-size: 13px;
-  color: var(--color-graphite);
-  margin-top: 4px;
-  display: block;
-}
-
-.ca-record-metrics-row {
-  display: flex;
-  gap: 12px;
-  margin: 16px 0;
-}
-
-.ca-metric-chip {
-  padding: 6px 12px;
-  background-color: var(--color-bone);
-  border-radius: var(--radius-inputs);
-  font-family: var(--font-inter);
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.ca-record-obs-box {
-  font-family: var(--font-inter);
-  font-size: 14px;
-  color: var(--color-pewter);
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-
-.ca-record-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px dashed var(--color-moss);
+.inicio-rodape {
+  border-top: var(--hairline);
   padding-top: 16px;
 }
 
-.ca-btn-delete {
+.inicio-stat {
+  font-size: 13px;
+  color: var(--color-forest-ink);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   CABEÇALHO DAS TELAS INTERNAS
+   ========================================================================== */
+.tela-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: var(--hairline);
+  position: sticky;
+  top: 0;
+  background-color: var(--color-vellum-sand);
+  z-index: 50;
+}
+
+.btn-voltar {
   background: none;
   border: none;
-  color: #b91c1c;
-  font-family: var(--font-inter);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-forest-ink);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tela-titulo {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  flex: 1;
+}
+
+.contador {
   font-size: 13px;
   font-weight: 600;
-  cursor: pointer;
+  color: var(--color-forest-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.ca-badge {
-  padding: 4px 10px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-family: var(--font-inter);
+/* ==========================================================================
+   FORMULÁRIO (Tela Novo Registro)
+   ========================================================================== */
+#formulario-registro {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.campo label {
+  display: block;
+  font-size: 13px;
   font-weight: 600;
+  color: var(--color-aged-ink);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
-.ca-badge--safe { background: #dcfce7; color: #15803d; }
-.ca-badge--warn { background: #fef9c3; color: #b45309; }
-.ca-badge--alert { background: #ffedd5; color: #c2410c; }
-.ca-badge--danger { background: #fee2e2; color: #b91c1c; }
 
-/* Empty State */
-.empty-state {
-  text-align: center;
-  padding: 40px;
-  background-color: var(--color-bone);
-  border-radius: var(--radius-cards);
+.obrigatorio {
+  color: var(--color-status-danger);
 }
-.empty-title {
-  font-family: var(--font-reckless);
-  font-size: 24px;
-  color: var(--color-charcoal);
+.opcional {
+  font-weight: 400;
+  text-transform: none;
+  color: var(--color-status-warn);
+  font-size: 12px;
 }
-.empty-desc {
-  font-family: var(--font-inter);
+
+/* Inputs e selects no formato Pill (arredondados) */
+.pill-input {
+  width: 100%;
+  background-color: transparent;
+  border: var(--hairline);
+  border-radius: var(--radius-inputs);
+  padding: 14px 20px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-forest-ink);
+  outline: none;
+  transition: background-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.pill-input:focus {
+  background-color: var(--color-pressed-linen);
+}
+
+.pill-input::placeholder {
+  color: var(--color-status-warn);
+  opacity: 0.7;
+}
+
+/* Textarea */
+.campo-textarea {
+  border-radius: 20px;
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Condição da área — Radio buttons visuais */
+.condicao-opcoes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.radio-condicao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 10px;
+  border: var(--hairline);
+  border-radius: var(--radius-inputs);
   font-size: 15px;
-  color: var(--color-pewter);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.radio-condicao input {
+  display: none;
+}
+
+.radio-condicao:hover {
+  background-color: var(--color-pressed-linen);
+}
+
+/* Estados selecionados */
+.radio-boa:has(input:checked) {
+  background-color: var(--color-forest-ink);
+  color: var(--color-vellum-sand);
+  border-color: var(--color-forest-ink);
+}
+
+.radio-atencao:has(input:checked) {
+  background-color: var(--color-status-warn);
+  color: var(--color-vellum-sand);
+  border-color: var(--color-status-warn);
+}
+
+.radio-critica:has(input:checked) {
+  background-color: var(--color-status-danger);
+  color: var(--color-vellum-sand);
+  border-color: var(--color-status-danger);
+}
+
+/* Mensagem de erro */
+.msg-erro {
+  background-color: #fef2f2;
+  border: 1px solid var(--color-status-danger);
+  border-radius: 12px;
+  padding: 14px 20px;
+  color: var(--color-status-danger);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Campo com erro */
+.campo-invalido .pill-input {
+  border-color: var(--color-status-danger);
+  background-color: #fef2f2;
+}
+
+/* Botões do formulário */
+.form-acoes {
+  display: flex;
+  gap: 16px;
   margin-top: 8px;
 }
 
-/* Toast */
+.form-acoes .btn-pill--primary {
+  flex: 2;
+}
+
+.form-acoes .btn-pill--ghost {
+  flex: 1;
+}
+
+/* ==========================================================================
+   FILTROS (Tela Lista de Registros)
+   ========================================================================== */
+.filtros-barra {
+  padding: 20px 24px;
+  border-bottom: var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filtros-selects {
+  display: flex;
+  gap: 12px;
+}
+
+.filtro-select {
+  flex: 1;
+  font-size: 14px;
+  padding: 12px 16px;
+}
+
+/* ==========================================================================
+   LISTA DE CARDS DE REGISTROS
+   ========================================================================== */
+.lista-cards {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card individual */
+.registro-card {
+  border: var(--hairline);
+  padding: 24px;
+  background-color: var(--color-pressed-linen);
+  transition: background-color 0.2s;
+}
+
+.registro-card:hover {
+  background-color: var(--color-vellum-sand);
+}
+
+.card-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.card-area {
+  font-family: var(--font-display);
+  font-size: var(--text-subheading);
+  color: var(--color-forest-ink);
+  line-height: 1.2;
+}
+
+.card-cultura {
+  font-size: 13px;
+  color: var(--color-aged-ink);
+  margin-top: 4px;
+}
+
+/* Badge de condição */
+.badge-condicao {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: var(--radius-buttons);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.badge-boa {
+  background-color: var(--color-forest-ink);
+  color: var(--color-vellum-sand);
+}
+
+.badge-atencao {
+  background-color: var(--color-status-warn);
+  color: var(--color-vellum-sand);
+}
+
+.badge-critica {
+  background-color: var(--color-status-danger);
+  color: var(--color-pure-white);
+}
+
+/* Detalhes do card */
+.card-detalhes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.detalhe-chip {
+  padding: 4px 14px;
+  border: var(--hairline);
+  border-radius: var(--radius-inputs);
+  font-size: 13px;
+  color: var(--color-forest-ink);
+}
+
+/* Observações */
+.card-obs {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--color-aged-ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 2px solid var(--color-forest-ink);
+}
+
+/* Rodapé do card */
+.card-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: var(--hairline);
+  padding-top: 12px;
+  font-size: 12px;
+  color: var(--color-aged-ink);
+}
+
+.btn-excluir {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-status-danger);
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.btn-excluir:hover {
+  color: var(--color-aged-ink);
+}
+
+/* ==========================================================================
+   ESTADO VAZIO
+   ========================================================================== */
+.estado-vazio {
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.vazio-titulo {
+  font-family: var(--font-display);
+  font-size: var(--text-subheading);
+  color: var(--color-forest-ink);
+  margin-bottom: 8px;
+}
+
+.vazio-desc {
+  font-size: 15px;
+  color: var(--color-aged-ink);
+}
+
+/* ==========================================================================
+   BOTÃO RESTAURAR DEMO
+   ========================================================================== */
+.demo-area {
+  text-align: center;
+  padding: 24px;
+  border-top: var(--hairline);
+}
+
+/* ==========================================================================
+   TOAST (Notificação flutuante)
+   ========================================================================== */
 .toast-container {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  pointer-events: none;
 }
-.ca-toast {
-  background-color: var(--color-pure-white);
-  border: 1px solid var(--color-moss);
-  border-radius: var(--radius-cards);
-  padding: 16px 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  font-family: var(--font-inter);
+
+.toast {
+  padding: 14px 28px;
+  border-radius: var(--radius-buttons);
+  font-family: var(--font-body);
   font-size: 14px;
-  animation: slideUp 0.3s ease;
+  font-weight: 600;
+  animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+  pointer-events: auto;
+  text-align: center;
 }
-@keyframes slideUp {
+
+.toast-sucesso {
+  background-color: var(--color-forest-ink);
+  color: var(--color-vivid-lime);
+}
+
+.toast-erro {
+  background-color: var(--color-status-danger);
+  color: var(--color-pure-white);
+}
+
+.toast-info {
+  background-color: var(--color-aged-ink);
+  color: var(--color-vellum-sand);
+}
+
+@keyframes toastIn {
   from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+
+/* ==========================================================================
+   DIÁLOGO DE CONFIRMAÇÃO DE EXCLUSÃO
+   ========================================================================== */
+.dialogo-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(30, 33, 30, 0.6);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.dialogo-caixa {
+  background-color: var(--color-vellum-sand);
+  border: var(--hairline);
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.dialogo-texto {
+  font-family: var(--font-display);
+  font-size: var(--text-subheading);
+  color: var(--color-forest-ink);
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.dialogo-acoes {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-pill--danger {
+  background-color: var(--color-status-danger);
+  color: var(--color-pure-white);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  border-radius: var(--radius-buttons);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-pill--danger:hover {
+  background-color: var(--color-aged-ink);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Mobile-first)
+   ========================================================================== */
+
+/* Celulares */
+@media (max-width: 600px) {
+  .display-titulo {
+    font-size: 64px;
+  }
+
+  .inicio-acoes {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .btn-grande {
+    width: 100%;
+  }
+
+  .condicao-opcoes {
+    grid-template-columns: 1fr;
+  }
+
+  .filtros-selects {
+    flex-direction: column;
+  }
+
+  .card-topo {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-detalhes {
+    flex-direction: column;
+  }
+
+  .dialogo-acoes {
+    flex-direction: column;
+  }
+}
+
+/* Tablets e desktops */
+@media (min-width: 768px) {
+  #formulario-registro {
+    padding: 48px 40px 80px;
+  }
+
+  .filtros-barra {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .filtros-barra .pill-input:first-child {
+    flex: 2;
+  }
+
+  .filtros-selects {
+    flex: 1;
+  }
+
+  .lista-cards {
+    padding: 32px 40px;
+  }
 }

@@ -3,238 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conecta Agro — Painel de Controle</title>
-  <meta name="description" content="Sistema de registro e consulta de medições agronômicas.">
+  <title>Conecta Agro — Registro de Campo</title>
+  <meta name="description" content="Sistema simples para registro e consulta de atividades de campo no meio rural.">
 
-  <!-- Fontes Editoriais (Inter & Cormorant Garamond) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Tokens e Estilos da Aplicação -->
+  <!-- Design System (importa Cormorant Garamond + Inter + tokens) -->
   <link rel="stylesheet" href="../design-system.css">
+  <!-- Estilos da Aplicação -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="arva-app">
+<body>
 
-  <!-- =========================================================================
-       1. CABEÇALHO SUPERIOR (FOREST HEADER)
-       ========================================================================= -->
-  <header class="arva-header" id="main-header">
-    <div class="arva-header__inner">
-      <a href="../index.html" class="arva-brand">
-        <span class="arva-brand__icon">▲</span> arva <span class="arva-brand__sub">| Conecta Agro</span>
-      </a>
+  <!-- ====================================================================
+       TELA 1 — INÍCIO (Apresentação + Navegação)
+       ==================================================================== -->
+  <section id="tela-inicio" class="tela ativa">
 
-      <div class="arva-header__actions">
-        <div class="arva-status" title="Dados locais">
-          <span class="arva-status__dot"></span>
-          Modo Local
-        </div>
-        <button id="btn-demo-seed" class="btn-pill btn-pill--ghost btn-demo">
-          Restaurar Demo
-        </button>
+    <!-- Faixa Marquee -->
+    <div class="marquee-strip">
+      <div class="marquee-content">
+        <span class="marquee-item">🌱 Conecta Agro v1.0</span>
+        <span class="marquee-item">Registro de atividades de campo</span>
+        <span class="marquee-item">Funciona 100% offline</span>
+        <span class="marquee-item">Dados salvos no seu navegador</span>
+        <span class="marquee-item">🌱 Conecta Agro v1.0</span>
+        <span class="marquee-item">Registro de atividades de campo</span>
+        <span class="marquee-item">Funciona 100% offline</span>
+        <span class="marquee-item">Dados salvos no seu navegador</span>
       </div>
     </div>
-  </header>
 
-  <!-- =========================================================================
-       CONTEÚDO PRINCIPAL (BONE CANVAS)
-       ========================================================================= -->
-  <div class="arva-container">
-
-    <!-- 2. FAIXA DE MÉTRICAS RÁPIDAS (QUILTED PASTEL CARDS) -->
-    <section class="arva-section" aria-label="Métricas de Campo">
-      <div class="arva-kpi-grid">
-        
-        <!-- Total -->
-        <div class="arva-card quilt-sky" id="kpi-card-total">
-          <div class="kpi-header">
-            <span class="kpi-icon">🌾</span>
-          </div>
-          <div class="kpi-body">
-            <div class="kpi-value" id="kpi-total-val">0</div>
-            <span class="kpi-label">Total Medições</span>
-          </div>
-        </div>
-
-        <!-- Umidade -->
-        <div class="arva-card quilt-peach" id="kpi-card-moisture">
-          <div class="kpi-header">
-            <span class="kpi-icon">💧</span>
-          </div>
-          <div class="kpi-body">
-            <div class="kpi-value" id="kpi-moisture-val">--%</div>
-            <span class="kpi-label">Umidade Média</span>
-          </div>
-        </div>
-
-        <!-- Temperatura -->
-        <div class="arva-card quilt-sage" id="kpi-card-temp">
-          <div class="kpi-header">
-            <span class="kpi-icon">🌡️</span>
-          </div>
-          <div class="kpi-body">
-            <div class="kpi-value" id="kpi-temp-val">--°C</div>
-            <span class="kpi-label">Temp. Média</span>
-          </div>
-        </div>
-
-        <!-- Alertas -->
-        <div class="arva-card quilt-bone" id="kpi-card-alerts">
-          <div class="kpi-header">
-            <span class="kpi-icon">⚠️</span>
-          </div>
-          <div class="kpi-body">
-            <div class="kpi-value" id="kpi-alerts-val">0</div>
-            <span class="kpi-label">Em Alerta</span>
-          </div>
-        </div>
-
+    <div class="inicio-conteudo">
+      <div class="inicio-texto">
+        <h1 class="display-titulo">Conecta<br>Agro</h1>
+        <p class="inicio-descricao">
+          Registre as atividades do campo de forma simples e organizada.
+          Seus dados ficam salvos aqui no navegador — sem internet, sem cadastro, sem complicação.
+        </p>
       </div>
-    </section>
 
-    <!-- 3. ÁREA DE TRABALHO PRINCIPAL -->
-    <main class="arva-main-grid" id="main-content">
+      <div class="inicio-acoes">
+        <button id="btn-ir-novo-registro" class="btn-pill btn-pill--primary btn-grande">
+          ✏️ Novo Registro
+        </button>
+        <button id="btn-ir-ver-registros" class="btn-pill btn-pill--ghost btn-grande">
+          📋 Ver Registros
+        </button>
+      </div>
 
-      <!-- =====================================================================
-           COLUNA 1: FORMULÁRIO DE REGISTRO
-           ===================================================================== -->
-      <section class="arva-panel" aria-labelledby="form-title">
-        <header class="panel-header">
-          <h2 id="form-title" class="panel-title">Nova Medição</h2>
-          <p class="panel-subtitle">Registre as observações do talhão.</p>
-        </header>
+      <div class="inicio-rodape">
+        <span class="inicio-stat" id="inicio-total">0 registros salvos</span>
+      </div>
+    </div>
+  </section>
 
-        <form id="form-measurement" novalidate class="arva-form">
+  <!-- ====================================================================
+       TELA 2 — NOVO REGISTRO (Formulário)
+       ==================================================================== -->
+  <section id="tela-novo-registro" class="tela">
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="input-datetime" class="form-label">Data e Hora <span class="req">*</span></label>
-              <input type="datetime-local" id="input-datetime" name="dateTime" class="form-input pill-input" required>
-            </div>
-            <div class="form-group">
-              <label for="input-field" class="form-label">Talhão / Lote <span class="req">*</span></label>
-              <input type="text" id="input-field" name="field" class="form-input pill-input" placeholder="Ex: Talhão 04" list="fields-suggestions" required>
-              <datalist id="fields-suggestions">
-                <option value="Talhão 01 - Baixada">
-                <option value="Talhão 02 - Encosta Leste">
-                <option value="Talhão 03 - Pivô Central">
-                <option value="Talhão 04 - Setor Norte">
-                <option value="Talhão 08 - Colina Sul">
-              </datalist>
-            </div>
-          </div>
+    <header class="tela-header">
+      <button id="btn-voltar-form" class="btn-voltar" title="Voltar ao início">← Voltar</button>
+      <h2 class="tela-titulo">Novo Registro</h2>
+    </header>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="input-crop" class="form-label">Cultura <span class="req">*</span></label>
-              <input type="text" id="input-crop" name="crop" class="form-input pill-input" placeholder="Ex: Milho Safrinha" list="crops-suggestions" required>
-              <datalist id="crops-suggestions">
-                <option value="Milho Safrinha DKB">
-                <option value="Soja Intacta BMX">
-                <option value="Café Arábica Catuaí">
-                <option value="Feijão Carioca">
-                <option value="Algodão DP 1744">
-              </datalist>
-            </div>
-            <div class="form-group">
-              <label for="input-moisture" class="form-label">Umidade Solo (%) <span class="req">*</span></label>
-              <div class="input-affix">
-                <input type="number" id="input-moisture" name="soilMoisture" class="form-input pill-input" placeholder="0 a 100" min="0" max="100" step="0.1" required>
-                <span class="affix-text">%</span>
-              </div>
-            </div>
-          </div>
+    <form id="formulario-registro" novalidate>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="input-temp" class="form-label">Temperatura (°C) <span class="req">*</span></label>
-              <div class="input-affix">
-                <input type="number" id="input-temp" name="temperature" class="form-input pill-input" placeholder="Ex: 29.5" min="-10" max="60" step="0.1" required>
-                <span class="affix-text">°C</span>
-              </div>
-            </div>
-          </div>
+      <!-- Data da atividade -->
+      <div class="campo">
+        <label for="campo-data">Data da atividade <span class="obrigatorio">*</span></label>
+        <input type="date" id="campo-data" class="pill-input" required>
+      </div>
 
-          <div class="form-group">
-            <label class="form-label" id="label-pest-status">Status de Pragas / Risco <span class="req">*</span></label>
-            <div class="segmented-pills" role="radiogroup" aria-labelledby="label-pest-status">
-              <label class="pill-radio pill-safe">
-                <input type="radio" name="pestStatus" value="safe" checked>
-                <span>Normal</span>
-              </label>
-              <label class="pill-radio pill-warn">
-                <input type="radio" name="pestStatus" value="warn">
-                <span>Atenção</span>
-              </label>
-              <label class="pill-radio pill-alert">
-                <input type="radio" name="pestStatus" value="alert">
-                <span>Alerta</span>
-              </label>
-              <label class="pill-radio pill-danger">
-                <input type="radio" name="pestStatus" value="danger">
-                <span>Crítico</span>
-              </label>
-            </div>
-          </div>
+      <!-- Responsável -->
+      <div class="campo">
+        <label for="campo-responsavel">Nome do responsável <span class="obrigatorio">*</span></label>
+        <input type="text" id="campo-responsavel" class="pill-input" placeholder="Ex: João da Silva" required>
+      </div>
 
-          <div class="form-group">
-            <label for="input-observations" class="form-label">Observações</label>
-            <textarea id="input-observations" name="observations" class="form-textarea pill-input" placeholder="Descreva sintomas, ações..."></textarea>
-          </div>
+      <!-- Área / Talhão -->
+      <div class="campo">
+        <label for="campo-area">Área ou talhão <span class="obrigatorio">*</span></label>
+        <input type="text" id="campo-area" class="pill-input" placeholder="Ex: Talhão 3 - Horta" required>
+      </div>
 
-          <div class="form-actions">
-            <button type="submit" id="btn-submit-measurement" class="btn-pill btn-pill--primary" style="flex: 2;">Salvar Medição</button>
-            <button type="reset" id="btn-reset-form" class="btn-pill btn-pill--dark-ghost" style="flex: 1;">Limpar</button>
-          </div>
+      <!-- Cultura -->
+      <div class="campo">
+        <label for="campo-cultura">Cultura <span class="obrigatorio">*</span></label>
+        <select id="campo-cultura" class="pill-input" required>
+          <option value="">Selecione a cultura...</option>
+          <option value="Milho">Milho</option>
+          <option value="Feijão">Feijão</option>
+          <option value="Mandioca">Mandioca</option>
+          <option value="Tomate">Tomate</option>
+          <option value="Capim">Capim</option>
+          <option value="Outra">Outra</option>
+        </select>
+      </div>
 
-        </form>
-      </section>
+      <!-- Tipo de atividade -->
+      <div class="campo">
+        <label for="campo-atividade">Tipo de atividade <span class="obrigatorio">*</span></label>
+        <select id="campo-atividade" class="pill-input" required>
+          <option value="">Selecione a atividade...</option>
+          <option value="Plantio">Plantio</option>
+          <option value="Irrigação">Irrigação</option>
+          <option value="Adubação">Adubação</option>
+          <option value="Controle de pragas">Controle de pragas</option>
+          <option value="Colheita">Colheita</option>
+          <option value="Inspeção">Inspeção</option>
+          <option value="Manutenção">Manutenção</option>
+        </select>
+      </div>
 
-      <!-- =====================================================================
-           COLUNA 2: HISTÓRICO
-           ===================================================================== -->
-      <section class="arva-panel" aria-labelledby="records-title">
-        <header class="panel-header" style="display: flex; justify-content: space-between; align-items: flex-end;">
-          <div>
-            <h2 id="records-title" class="panel-title">Histórico</h2>
-            <p class="panel-subtitle" id="records-counter-text">Carregando...</p>
-          </div>
-        </header>
-
-        <div class="filter-bar">
-          <div class="search-box">
-            <input type="text" id="search-input" class="form-input pill-input" placeholder="Buscar talhão ou cultura...">
-            <button type="button" id="btn-clear-search" class="btn-clear" style="display: none;">✕</button>
-          </div>
-          <select id="filter-status-select" class="form-input pill-input select-filter">
-            <option value="all">Todos os Status</option>
-            <option value="safe">Normal</option>
-            <option value="warn">Atenção</option>
-            <option value="alert">Alerta</option>
-            <option value="danger">Crítico</option>
-          </select>
+      <!-- Condição da área -->
+      <div class="campo">
+        <label>Condição da área <span class="obrigatorio">*</span></label>
+        <div class="condicao-opcoes">
+          <label class="radio-condicao radio-boa">
+            <input type="radio" name="condicao" value="boa" required>
+            <span>🟢 Boa</span>
+          </label>
+          <label class="radio-condicao radio-atencao">
+            <input type="radio" name="condicao" value="atenção">
+            <span>🟡 Atenção</span>
+          </label>
+          <label class="radio-condicao radio-critica">
+            <input type="radio" name="condicao" value="crítica">
+            <span>🔴 Crítica</span>
+          </label>
         </div>
+      </div>
 
-        <div id="records-container" class="records-list" role="region" aria-live="polite">
-          <!-- Dinâmico -->
-        </div>
+      <!-- Observações -->
+      <div class="campo">
+        <label for="campo-obs">Observações <span class="opcional">(opcional)</span></label>
+        <textarea id="campo-obs" class="pill-input campo-textarea" placeholder="Descreva o que observou no campo..."></textarea>
+      </div>
 
-        <div id="empty-state" class="empty-state" style="display: none;">
-          <h3 class="empty-title">Vazio</h3>
-          <p class="empty-desc" id="empty-state-message">Nenhuma medição encontrada.</p>
-          <button type="button" id="btn-empty-reset" class="btn-pill btn-pill--dark-ghost" style="margin-top: 16px;">Limpar Filtros</button>
-        </div>
+      <!-- Mensagem de erro geral -->
+      <div id="msg-erro-form" class="msg-erro" style="display:none;"></div>
 
-      </section>
+      <!-- Botões -->
+      <div class="form-acoes">
+        <button type="submit" class="btn-pill btn-pill--primary btn-grande">Salvar Registro</button>
+        <button type="reset" id="btn-limpar-form" class="btn-pill btn-pill--ghost">Limpar</button>
+      </div>
 
-    </main>
+    </form>
+  </section>
+
+  <!-- ====================================================================
+       TELA 3 — LISTA DE REGISTROS
+       ==================================================================== -->
+  <section id="tela-registros" class="tela">
+
+    <header class="tela-header">
+      <button id="btn-voltar-lista" class="btn-voltar" title="Voltar ao início">← Voltar</button>
+      <h2 class="tela-titulo">Registros</h2>
+      <span class="contador" id="contador-registros">0 registros</span>
+    </header>
+
+    <!-- Filtros -->
+    <div class="filtros-barra">
+      <input type="text" id="filtro-busca" class="pill-input" placeholder="Buscar por responsável, área ou cultura...">
+
+      <div class="filtros-selects">
+        <select id="filtro-atividade" class="pill-input filtro-select">
+          <option value="">Todas as atividades</option>
+          <option value="Plantio">Plantio</option>
+          <option value="Irrigação">Irrigação</option>
+          <option value="Adubação">Adubação</option>
+          <option value="Controle de pragas">Controle de pragas</option>
+          <option value="Colheita">Colheita</option>
+          <option value="Inspeção">Inspeção</option>
+          <option value="Manutenção">Manutenção</option>
+        </select>
+
+        <select id="filtro-condicao" class="pill-input filtro-select">
+          <option value="">Todas as condições</option>
+          <option value="boa">Boa</option>
+          <option value="atenção">Atenção</option>
+          <option value="crítica">Crítica</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Container de cards -->
+    <div id="lista-registros" class="lista-cards"></div>
+
+    <!-- Estado vazio -->
+    <div id="estado-vazio" class="estado-vazio" style="display:none;">
+      <p class="vazio-titulo">Nenhum registro encontrado</p>
+      <p class="vazio-desc">Crie um novo registro ou altere os filtros.</p>
+    </div>
+
+    <!-- Restaurar demo -->
+    <div class="demo-area">
+      <button id="btn-restaurar-demo" class="btn-pill btn-pill--ghost">
+        🔄 Restaurar dados de demonstração
+      </button>
+    </div>
+
+  </section>
+
+  <!-- Toast de notificação -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Diálogo de confirmação de exclusão -->
+  <div id="dialogo-excluir" class="dialogo-overlay" style="display:none;">
+    <div class="dialogo-caixa">
+      <p class="dialogo-texto">Tem certeza que deseja excluir este registro?</p>
+      <div class="dialogo-acoes">
+        <button id="btn-confirmar-excluir" class="btn-pill btn-pill--danger">Sim, excluir</button>
+        <button id="btn-cancelar-excluir" class="btn-pill btn-pill--ghost">Cancelar</button>
+      </div>
+    </div>
   </div>
 
-  <!-- Toast Notificações -->
-  <div id="toast-container" class="toast-container" aria-live="assertive"></div>
-
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

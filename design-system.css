@@ -1,121 +1,55 @@
 /* ==========================================================================
-   CONECTA AGRO — DESIGN SYSTEM
-   Baseado nas diretrizes "Arva — Style Reference"
+   CONECTA AGRO — DESIGN SYSTEM (HÍBRIDO: VELLUM & FOREST)
+   Fundindo 'Arva' e 'Leandra-isler'
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  /* Colors */
+  /* Colors - Vellum & Ink */
+  --color-vellum-sand: #f4e6cd;
+  --color-pressed-linen: #edddc3;
   --color-forest-ink: #07503f;
+  --color-aged-ink: #1e211e;
   --color-vivid-lime: #e8fe85;
-  --color-bone: #f1efdf;
-  --color-pure-white: #ffffff;
-  --color-ash-gray: #efefef;
-  --color-charcoal: #212529;
-  --color-graphite: #353535;
-  --color-pewter: #6d6d6d;
-  --color-sky-card: #b2cee7;
-  --color-peach-card: #fceace;
-  --color-sage-card: #e6ecd5;
-  --color-moss: #c3cda7;
+  --color-pure-white: #ffffff; /* Uso quase nulo, apenas se essencial */
 
-  /* Typography — Font Families */
-  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-reckless: 'Cormorant Garamond', serif; /* Substituto para Reckless */
+  /* Semântica Suavizada para o Fundo Vellum */
+  --color-status-safe: #07503f;
+  --color-status-warn: #8f774b;
+  --color-status-alert: #c2410c;
+  --color-status-danger: #b91c1c;
 
-  /* Typography — Scale */
-  --text-caption: 12px;
-  --leading-caption: 1.5;
-  --tracking-caption: 0.025em;
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.5;
-  --tracking-body-sm: 0.025em;
+  /* Tipografia */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Escala de Tipografia Extrema (Leandra Style) */
+  --text-caption: 14px;
   --text-body: 16px;
-  --leading-body: 1.52;
-  --tracking-body: -0.022em;
+  --text-body-lg: 18px;
   --text-subheading: 24px;
-  --leading-subheading: 1.24;
-  --tracking-subheading: -0.012em;
-  --text-heading-sm: 37px;
-  --leading-heading-sm: 1.22;
-  --tracking-heading-sm: -0.012em;
-  --text-heading: 45px;
-  --leading-heading: 1.06;
-  --tracking-heading: -0.012em;
-  --text-heading-lg: 57px;
-  --leading-heading-lg: 1.06;
-  --tracking-heading-lg: -0.022em;
-  --text-display: 80px;
-  --leading-display: 1;
-  --tracking-display: -0.037em;
+  --text-heading: 40px;
+  --text-heading-lg: 75px;
+  --text-display-huge: 120px; /* Scaling drástico */
 
-  /* Spacing */
-  --spacing-5: 5px;
-  --spacing-8: 8px;
-  --spacing-10: 10px;
-  --spacing-12: 12px;
-  --spacing-15: 15px;
-  --spacing-20: 20px;
-  --spacing-24: 24px;
-  --spacing-30: 30px;
-  --spacing-40: 40px;
-  --spacing-50: 50px;
-  --spacing-64: 64px;
+  /* Espaçamentos e Geometria */
+  --radius-sharp: 0px;
+  --radius-cards: 0px;
+  --radius-inputs: 33px; /* Herança interativa do Arva */
+  --radius-buttons: 100px; /* Herança interativa do Arva */
+  
+  --hairline: 1px solid var(--color-forest-ink);
+  
+  --section-gap: 80px;
 
-  /* Border Radius */
-  --radius-cards: 20px;
-  --radius-inputs: 33px;
-  --radius-buttons: 100px;
-  --radius-nav-pills: 110px;
-
-  /* Compatibility with existing front app */
+  /* Aliases de retrocompatibilidade para o front (app.js) */
   --ca-brand-deep: var(--color-forest-ink);
   --ca-brand-primary: var(--color-forest-ink);
-  --ca-brand-hover: #0a6b54;
-  --ca-brand-accent: var(--color-vivid-lime);
-  --ca-brand-light: var(--color-sage-card);
-  
-  --ca-earth-rich: var(--color-charcoal);
-  --ca-earth-terra: var(--color-graphite);
-  --ca-harvest-gold: var(--color-moss);
-  --ca-harvest-light: var(--color-peach-card);
-  
-  --ca-text-main: var(--color-charcoal);
-  --ca-text-muted: var(--color-pewter);
-  --ca-text-light: var(--color-ash-gray);
-  
-  --ca-border-light: var(--color-moss);
-  --ca-border-medium: var(--color-pewter);
-  
-  --ca-bg-app: var(--color-bone);
-  --ca-bg-surface: var(--color-pure-white);
-  --ca-bg-subtle: var(--color-bone);
-
-  --ca-font-sans: var(--font-inter);
-  --ca-font-display: var(--font-reckless);
-  
-  --ca-radius-sm: 8px;
-  --ca-radius-md: var(--radius-cards);
-  --ca-radius-lg: var(--radius-cards);
-  --ca-radius-full: 9999px;
-  
-  --ca-shadow-sm: none;
-  --ca-shadow-md: none;
-  --ca-shadow-lg: none;
-  --ca-transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  
-  /* Status Base Colors */
-  --ca-status-safe: #15803D;
-  --ca-status-safe-bg: #DCFCE7;
-  --ca-status-warn: #B45309;
-  --ca-status-warn-bg: #FEF9C3;
-  --ca-status-alert: #C2410C;
-  --ca-status-alert-bg: #FFEDD5;
-  --ca-status-danger: #B91C1C;
-  --ca-status-danger-bg: #FEE2E2;
-  --ca-status-hydro: #0284C7;
-  --ca-status-hydro-bg: #E0F2FE;
+  --ca-bg-app: var(--color-vellum-sand);
+  --ca-bg-surface: var(--color-pressed-linen);
+  --ca-text-main: var(--color-aged-ink);
+  --ca-border-light: var(--color-forest-ink); /* Tudo é hairline forest */
 }
 
 *, *::before, *::after {
@@ -125,61 +59,63 @@
 }
 
 body {
-  font-family: var(--font-inter);
-  background-color: var(--color-bone);
-  color: var(--color-charcoal);
-  line-height: var(--leading-body);
-  letter-spacing: var(--tracking-body);
+  font-family: var(--font-body);
+  background-color: var(--color-vellum-sand);
+  color: var(--color-aged-ink);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-reckless);
-  color: var(--color-charcoal);
+/* Tipografia Base */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-forest-ink);
+  font-weight: 400;
 }
 
-/* ==========================================================================
-   COMPONENTES: BOTÕES (BUTTONS) - Padrão Pill 100px
-   ========================================================================== */
+/* Links em Hairline (Leandra) */
+.link-hairline {
+  color: var(--color-forest-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-forest-ink);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+.link-hairline:hover {
+  border-bottom-width: 2px;
+}
+
+/* Botões Pill (Arva) */
 .btn-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-8);
-  padding: var(--spacing-10) var(--spacing-24);
-  font-family: var(--font-inter);
-  font-size: var(--text-body-sm);
+  padding: 12px 28px;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
   font-weight: 600;
-  letter-spacing: var(--tracking-body-sm);
   border-radius: var(--radius-buttons);
   cursor: pointer;
   text-decoration: none;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .btn-pill--primary {
   background-color: var(--color-forest-ink);
-  color: var(--color-pure-white);
+  color: var(--color-vellum-sand);
   border: none;
 }
-
 .btn-pill--primary:hover {
-  opacity: 0.9;
+  background-color: var(--color-aged-ink);
 }
 
 .btn-pill--ghost {
   background-color: transparent;
-  color: var(--color-pure-white);
-  border: 1px solid var(--color-pure-white);
+  color: var(--color-forest-ink);
+  border: 1px solid var(--color-forest-ink);
 }
-
 .btn-pill--ghost:hover {
-  background-color: rgba(255,255,255,0.1);
-}
-
-.btn-pill--dark-ghost {
-  background-color: transparent;
-  color: var(--color-charcoal);
-  border: 1px solid var(--color-charcoal);
+  background-color: var(--color-pressed-linen);
 }
