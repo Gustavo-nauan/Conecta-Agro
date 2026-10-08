@@ -3,7 +3,7 @@
    Fundindo 'Arva' e 'Leandra-isler'
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+/* Tipografia: apenas fontes do sistema (nada é baixado da internet). */
 
 :root {
   /* Colors - Vellum & Ink */
@@ -21,8 +21,20 @@
   --color-status-danger: #b91c1c;
 
   /* Tipografia */
-  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --fonte-base: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--fonte-base);
+  --font-body: var(--fonte-base);
+
+  /* Tamanhos padronizados */
+  --tamanho-texto: 16px;
+  --tamanho-pequeno: 14px;
+  --tamanho-subtitulo: 24px;
+  --tamanho-titulo: 40px;
+
+  /* Pesos padronizados */
+  --peso-normal: 400;
+  --peso-destaque: 600;
+  --peso-titulo: 700;
 
   /* Escala de Tipografia Extrema (Leandra Style) */
   --text-caption: 14px;
@@ -59,7 +71,9 @@
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--fonte-base);
+  font-size: var(--tamanho-texto);
+  font-weight: var(--peso-normal);
   background-color: var(--color-vellum-sand);
   color: var(--color-aged-ink);
   line-height: 1.5;
@@ -68,9 +82,14 @@ body {
 
 /* Tipografia Base */
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
+  font-family: var(--fonte-base);
   color: var(--color-forest-ink);
-  font-weight: 400;
+  font-weight: var(--peso-titulo);
+}
+
+/* Campos e botões herdam a mesma fonte */
+input, select, textarea, button {
+  font-family: inherit;
 }
 
 /* Links em Hairline (Leandra) */

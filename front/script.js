@@ -147,6 +147,20 @@ function mostrarTela(idTela) {
   }
   // Voltar ao topo
   window.scrollTo(0, 0);
+  atualizarNavFlutuante(idTela);
+}
+
+/**
+ * Mostra a navegação flutuante apenas fora da tela inicial e
+ * esconde o botão que leva para a página onde o usuário já está.
+ */
+function atualizarNavFlutuante(idTela) {
+  const nav = document.getElementById('nav-flutuante');
+  if (!nav) return;
+  nav.hidden = (idTela === 'tela-inicio');
+  nav.querySelectorAll('.fab').forEach(btn => {
+    btn.hidden = (btn.dataset.destino === idTela);
+  });
 }
 
 // ============================================================================
@@ -263,6 +277,7 @@ function renderizarRegistros() {
 function criarCardRegistro(reg) {
   const card = document.createElement('div');
   card.className = 'registro-card';
+  card.classList.add('condicao-' + (reg.condicao === 'atenção' ? 'atencao' : reg.condicao === 'crítica' ? 'critica' : 'boa'));
   card.dataset.id = reg.id;
 
   // Determinar classe do badge
@@ -291,9 +306,9 @@ function criarCardRegistro(reg) {
       <span class="badge-condicao ${badgeClasse}">${badgeTexto}</span>
     </div>
     <div class="card-detalhes">
-      <span class="detalhe-chip">📅 ${formatarData(reg.data)}</span>
-      <span class="detalhe-chip">👤 ${reg.responsavel}</span>
-      <span class="detalhe-chip">🔧 ${reg.atividade}</span>
+      <span class="detalhe-chip">${formatarData(reg.data)}</span>
+      <span class="detalhe-chip">${reg.responsavel}</span>
+      <span class="detalhe-chip">${reg.atividade}</span>
     </div>
     ${obsHtml}
     <div class="card-rodape">
@@ -472,6 +487,16 @@ document.addEventListener('DOMContentLoaded', function () {
     mostrarTela('tela-registros');
   });
 
+  // Botões flutuantes de navegação
+  document.querySelectorAll('#nav-flutuante .fab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const destino = btn.dataset.destino;
+      if (destino === 'tela-registros') renderizarRegistros();
+      if (destino === 'tela-inicio') atualizarContadorInicio();
+      mostrarTela(destino);
+    });
+  });
+
   // Botão "Voltar" do formulário
   document.getElementById('btn-voltar-form').addEventListener('click', function () {
     mostrarTela('tela-inicio');
@@ -498,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function () {
     salvarRegistros(registros);
 
     // Feedback visual
-    mostrarToast('✅ Registro salvo com sucesso!', 'sucesso');
+    mostrarToast('Registro salvo com sucesso!', 'sucesso');
 
     // Limpar formulário
     this.reset();

@@ -31,7 +31,7 @@
 
     <!-- Conteúdo em primeiro plano -->
     <div class="hero-conteudo">
-      <p class="hero-selo fade-in">🌱 Registro de atividades de campo</p>
+      <p class="hero-selo fade-in">Registro de atividades de campo</p>
 
       <h1 id="hero-titulo" class="hero-titulo fade-in">Conecta Agro</h1>
 
@@ -42,10 +42,10 @@
 
       <div class="hero-acoes fade-in">
         <button type="button" id="btn-ir-novo-registro" class="btn-hero btn-hero--principal">
-          ✏️ Iniciar coleta
+          Iniciar coleta
         </button>
         <button type="button" id="btn-ir-ver-registros" class="btn-hero btn-hero--secundario">
-          📋 Ver registros
+          Ver registros
         </button>
       </div>
 
@@ -118,15 +118,15 @@
         <div class="condicao-opcoes">
           <label class="radio-condicao radio-boa">
             <input type="radio" name="condicao" value="boa" required>
-            <span>🟢 Boa</span>
+            <span>Boa</span>
           </label>
           <label class="radio-condicao radio-atencao">
             <input type="radio" name="condicao" value="atenção">
-            <span>🟡 Atenção</span>
+            <span>Atenção</span>
           </label>
           <label class="radio-condicao radio-critica">
             <input type="radio" name="condicao" value="crítica">
-            <span>🔴 Crítica</span>
+            <span>Crítica</span>
           </label>
         </div>
       </fieldset>
@@ -200,11 +200,19 @@
     <!-- Restaurar demo -->
     <div class="demo-area">
       <button type="button" id="btn-restaurar-demo" class="btn-pill btn-pill--ghost">
-        🔄 Restaurar dados de demonstração
+        Restaurar dados de demonstração
       </button>
     </div>
 
   </section>
+
+  <!-- Botões flutuantes de navegação (aparecem só em Novo Registro e Registros;
+       o botão da página atual fica oculto — controlado em script.js) -->
+  <nav id="nav-flutuante" class="nav-flutuante" aria-label="Navegação rápida" hidden>
+    <button type="button" class="fab" data-destino="tela-inicio" aria-label="Ir para o início">Início</button>
+    <button type="button" class="fab" data-destino="tela-novo-registro" aria-label="Ir para novo registro">Novo</button>
+    <button type="button" class="fab" data-destino="tela-registros" aria-label="Ir para a lista de registros">Registros</button>
+  </nav>
 
   <!-- Toast de notificação -->
   <div id="toast-container" class="toast-container" aria-live="polite"></div>

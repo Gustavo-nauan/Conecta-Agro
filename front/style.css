@@ -789,3 +789,103 @@ a:focus-visible,
     padding: 32px 40px;
   }
 }
+
+/* ==========================================================================
+   TIPOGRAFIA PADRONIZADA (fonte única definida no design-system.css)
+   ========================================================================== */
+.hero-titulo, .tela-titulo, .card-area, .vazio-titulo, .dialogo-texto {
+  font-family: var(--fonte-base);
+  font-weight: var(--peso-titulo);
+}
+.hero-titulo { letter-spacing: -0.02em; }
+.tela-titulo { font-size: var(--tamanho-subtitulo); }
+.card-area { font-size: 22px; }
+.campo label, .campo-fieldset > legend, .btn-voltar, .btn-excluir, .toast { font-weight: var(--peso-destaque); }
+.pill-input { font-size: var(--tamanho-texto); font-weight: var(--peso-normal); }
+.hero-descricao, .campo, .card-obs { font-weight: var(--peso-normal); }
+.card-obs { font-style: normal; }
+
+/* ==========================================================================
+   PÁGINA DE REGISTROS — CARDS EM DESTAQUE
+   ========================================================================== */
+#tela-registros { background-color: #e6efdc; }
+#tela-registros .tela-header,
+#tela-registros .filtros-barra { background-color: #e6efdc; }
+#tela-registros .demo-area { border-top-color: rgba(7, 80, 63, 0.25); }
+
+.lista-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 24px 20px;
+}
+
+.registro-card {
+  position: relative;
+  background-color: var(--color-pure-white);
+  border: 1px solid rgba(7, 80, 63, 0.18);
+  border-left: 8px solid var(--color-forest-ink);
+  border-radius: 16px;
+  padding: 24px 24px 20px;
+  box-shadow: 0 6px 18px rgba(7, 80, 63, 0.14);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.registro-card:hover {
+  background-color: var(--color-pure-white);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(7, 80, 63, 0.22);
+}
+.registro-card.condicao-boa    { border-left-color: var(--color-forest-ink); }
+.registro-card.condicao-atencao { border-left-color: #d4a017; }
+.registro-card.condicao-critica { border-left-color: var(--color-status-danger); }
+
+.card-cultura { font-size: var(--tamanho-texto); font-weight: var(--peso-destaque); color: var(--color-forest-ink); }
+.detalhe-chip { font-size: var(--tamanho-pequeno); background-color: #f3f7ee; }
+
+@media (min-width: 768px) {
+  .lista-cards { grid-template-columns: repeat(2, 1fr); padding: 32px 40px; }
+}
+@media (min-width: 1200px) {
+  .lista-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ==========================================================================
+   BOTÕES FLUTUANTES DE NAVEGAÇÃO
+   ========================================================================== */
+[hidden] { display: none !important; }
+
+.nav-flutuante {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.fab {
+  min-width: 96px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: var(--radius-buttons);
+  background-color: var(--color-forest-ink);
+  color: var(--color-pure-white);
+  font-size: var(--tamanho-pequeno);
+  font-weight: var(--peso-destaque);
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.fab:hover { background-color: var(--color-aged-ink); transform: translateY(-2px); }
+.fab:focus-visible { outline: 3px solid var(--color-vivid-lime); outline-offset: 3px; }
+
+/* Espaço extra para o conteúdo não ficar atrás dos botões flutuantes */
+#tela-novo-registro, #tela-registros { padding-bottom: 150px; }
+.toast-container { bottom: 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .registro-card, .registro-card:hover, .fab, .fab:hover { transition: none; transform: none; }
+}
