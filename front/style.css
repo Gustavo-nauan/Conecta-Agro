@@ -1,10 +1,8 @@
 /* ==========================================================================
    CONECTA AGRO — ESTILOS DA APLICAÇÃO
-   Utiliza os tokens do design-system.css (Vellum & Forest)
+   Utiliza os tokens do design-system.css (Vellum & Forest),
+   carregado diretamente pelo index.html.
    ========================================================================== */
-
-/* --- Reset e importação do Design System --- */
-@import url('../design-system.css');
 
 /* ==========================================================================
    SISTEMA DE TELAS (Navegação SPA)
@@ -19,77 +17,29 @@
 }
 
 /* ==========================================================================
-   MARQUEE (Faixa animada no topo da tela Início)
+   ACESSIBILIDADE GERAL
    ========================================================================== */
-.marquee-strip {
-  background-color: var(--color-vivid-lime);
-  height: 36px;
-  width: 100%;
-  display: flex;
-  align-items: center;
+
+/* Foco visível em todos os elementos interativos (teclado) */
+button:focus-visible,
+a:focus-visible,
+.pill-input:focus-visible,
+.radio-condicao:has(input:focus-visible) {
+  outline: 3px solid var(--color-forest-ink);
+  outline-offset: 3px;
+}
+
+/* Texto apenas para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  border-bottom: var(--hairline);
-}
-
-.marquee-content {
-  display: inline-block;
-  animation: marquee 25s linear infinite;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-forest-ink);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-@keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-item {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 48px;
-}
-
-/* ==========================================================================
-   TELA INÍCIO
-   ========================================================================== */
-.inicio-conteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 36px); /* descontar marquee */
-  padding: 40px 24px;
-  text-align: center;
-}
-
-.display-titulo {
-  font-family: var(--font-display);
-  font-size: 100px;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  color: var(--color-forest-ink);
-  margin-bottom: 24px;
-  font-weight: 300;
-}
-
-.inicio-descricao {
-  font-size: var(--text-body-lg);
-  color: var(--color-aged-ink);
-  max-width: 500px;
-  margin-bottom: 48px;
-  line-height: 1.6;
-}
-
-.inicio-acoes {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 40px;
+  border: 0;
 }
 
 .btn-grande {
@@ -97,17 +47,212 @@
   font-size: 16px;
 }
 
-.inicio-rodape {
-  border-top: var(--hairline);
-  padding-top: 16px;
+/* ==========================================================================
+   HERO — TELA INICIAL EM TELA CHEIA (mobile-first)
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh; /* altura real em navegadores móveis */
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--color-pure-white);
 }
 
-.inicio-stat {
+.hero.ativa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Camada de fundo — o blur é aplicado SOMENTE aqui, nunca no texto.
+   >>> PARA TROCAR O FUNDO: substitua o arquivo assets/campo.jpg
+       (ou altere o url() abaixo). O gradiente + SVG que vêm depois
+       servem de reserva, caso a imagem não exista. */
+.hero-fundo {
+  position: absolute;
+  inset: -24px; /* sobra nas bordas para o blur não deixar margem clara */
+  z-index: -2;
+  background-color: #2f5d3a;
+  background-image:
+    url('../assets/campo.jpg'),
+    /* Reserva em SVG: colinas e linhas de plantio */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900' preserveAspectRatio='none'%3E%3Cpath d='M0 520 Q400 430 800 500 T1600 470 V900 H0Z' fill='%236f9a4c'/%3E%3Cpath d='M0 620 Q500 540 1000 610 T1600 590 V900 H0Z' fill='%234a7a3a'/%3E%3Cpath d='M0 740 Q600 660 1600 730 V900 H0Z' fill='%232f5d2c'/%3E%3Cg stroke='%23234a22' stroke-width='3' opacity='.5'%3E%3Cpath d='M0 790 Q600 720 1600 780'/%3E%3Cpath d='M0 830 Q600 760 1600 820'/%3E%3Cpath d='M0 870 Q600 800 1600 860'/%3E%3C/g%3E%3C/svg%3E"),
+    /* Reserva: céu ao amanhecer */
+    linear-gradient(180deg, #f6c58a 0%, #f3dcae 35%, #cfe0b8 60%, #6f9a4c 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  transform: scale(1.03);
+}
+
+/* Camada escura translúcida em verde-escuro (~50%) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(4, 40, 31, 0.45) 0%, rgba(4, 40, 31, 0.55) 100%);
+}
+
+/* Conteúdo centralizado */
+.hero-conteudo {
+  width: 100%;
+  max-width: 760px;
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-selo {
+  display: inline-block;
   font-size: 13px;
-  color: var(--color-forest-ink);
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--radius-buttons);
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+  margin-bottom: 24px;
+}
+
+.hero-titulo {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(56px, 15vw, 128px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--color-pure-white);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  margin-bottom: 24px;
+}
+
+.hero-descricao {
+  font-size: clamp(18px, 2.4vw, 22px);
+  line-height: 1.6;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+  margin-bottom: 40px;
+}
+
+/* Botões do hero — grandes e fáceis de tocar */
+.hero-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 16px 32px;
+  border-radius: var(--radius-buttons);
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hero:hover {
+  transform: translateY(-2px);
+}
+
+.btn-hero:active {
+  transform: translateY(0);
+}
+
+/* Principal: lima sobre verde (alto contraste) */
+.btn-hero--principal {
+  background-color: var(--color-vivid-lime);
+  color: var(--color-forest-ink);
+  border: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.btn-hero--principal:hover {
+  background-color: #f2ffb8;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+/* Secundário: contorno branco */
+.btn-hero--secundario {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--color-pure-white);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.btn-hero--secundario:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Foco visível sobre fundo escuro */
+.btn-hero:focus-visible {
+  outline: 3px solid var(--color-vivid-lime);
+  outline-offset: 4px;
+}
+
+.hero-stat {
+  margin-top: 32px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Animação suave de entrada (escalonada) */
+.fade-in {
+  opacity: 0;
+  animation: heroFadeIn 0.8s ease-out forwards;
+}
+.hero-conteudo .fade-in:nth-child(1) { animation-delay: 0.05s; }
+.hero-conteudo .fade-in:nth-child(2) { animation-delay: 0.15s; }
+.hero-conteudo .fade-in:nth-child(3) { animation-delay: 0.3s; }
+.hero-conteudo .fade-in:nth-child(4) { animation-delay: 0.45s; }
+.hero-conteudo .fade-in:nth-child(5) { animation-delay: 0.6s; }
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Computador: botões lado a lado */
+@media (min-width: 640px) {
+  .hero-acoes {
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
+  }
+  .btn-hero {
+    min-width: 220px;
+  }
+}
+
+/* Respeitar quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+    animation: none;
+  }
+  .btn-hero,
+  .btn-hero:hover {
+    transition: none;
+    transform: none;
+  }
 }
 
 /* ==========================================================================
@@ -161,7 +306,13 @@
   gap: 24px;
 }
 
-.campo label {
+.campo-fieldset {
+  border: none;
+  min-width: 0;
+}
+
+.campo > label,
+.campo-fieldset > legend {
   display: block;
   font-size: 13px;
   font-weight: 600;
@@ -234,7 +385,15 @@
 }
 
 .radio-condicao input {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.radio-condicao {
+  position: relative;
 }
 
 .radio-condicao:hover {
@@ -581,16 +740,6 @@
 
 /* Celulares */
 @media (max-width: 600px) {
-  .display-titulo {
-    font-size: 64px;
-  }
-
-  .inicio-acoes {
-    flex-direction: column;
-    width: 100%;
-    padding: 0 16px;
-  }
-
   .btn-grande {
     width: 100%;
   }

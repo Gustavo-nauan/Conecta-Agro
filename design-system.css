@@ -21,8 +21,8 @@
   --color-status-danger: #b91c1c;
 
   /* Tipografia */
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 
   /* Escala de Tipografia Extrema (Leandra Style) */
   --text-caption: 14px;

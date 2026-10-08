@@ -3,227 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conecta Agro — Landing Page</title>
+  <title>Conecta Agro — Registro de Atividades de Campo</title>
+  <meta name="description" content="Conecta Agro: registre e consulte de forma simples as atividades de campo. Funciona no celular e sem internet.">
+  <meta name="theme-color" content="#07503f">
+
+  <!-- Design System (tokens Vellum & Forest) -->
   <link rel="stylesheet" href="design-system.css">
-  <style>
-    /* Estilos Landing Page - Vellum & Forest */
-
-    /* Marquee Arva-style */
-    .marquee-strip {
-      background-color: var(--color-vivid-lime);
-      height: 32px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      white-space: nowrap;
-      border-bottom: var(--hairline);
-    }
-    .marquee-content {
-      display: inline-block;
-      animation: marquee 20s linear infinite;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--color-forest-ink);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .marquee-item { display: inline-flex; align-items: center; margin-right: 40px; }
-
-    /* Nav Leandra-style */
-    .nav-header {
-      padding: 30px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: var(--hairline);
-    }
-    .brand-logo {
-      font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 14px;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      color: var(--color-forest-ink);
-    }
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 400;
-      text-decoration: none;
-      color: var(--color-aged-ink);
-    }
-
-    /* Hero Leandra/Arva Hybrid */
-    .hero {
-      position: relative;
-      width: 100%;
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      overflow: hidden;
-    }
-    
-    .hero-text-container {
-      padding: 60px 40px;
-      z-index: 2;
-    }
-
-    .display-huge {
-      font-family: var(--font-display);
-      font-size: var(--text-display-huge);
-      line-height: 0.85;
-      letter-spacing: -0.04em;
-      color: var(--color-forest-ink);
-      max-width: 1200px;
-      margin-bottom: 40px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-    }
-
-    .botanical-img {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 50vw;
-      height: 80vh;
-      object-fit: cover;
-      object-position: left top;
-      z-index: 1;
-      opacity: 0.9;
-      border-top-left-radius: 4px;
-    }
-
-    /* Quilt Sections as Hairline grids */
-    .plan-section {
-      padding: var(--section-gap) 40px;
-      border-top: var(--hairline);
-    }
-
-    .section-title {
-      font-size: var(--text-heading-lg);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      margin-bottom: 60px;
-    }
-
-    .grid-plan {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: var(--hairline);
-      border-left: var(--hairline);
-    }
-
-    .plan-cell {
-      padding: 40px;
-      border-right: var(--hairline);
-      border-bottom: var(--hairline);
-      background-color: var(--color-pressed-linen);
-    }
-
-    .cell-num {
-      font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: var(--color-aged-ink);
-    }
-
-    .cell-title {
-      font-family: var(--font-display);
-      font-size: 32px;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .cell-desc {
-      font-size: 16px;
-      color: var(--color-aged-ink);
-    }
-
-    @media (max-width: 1024px) {
-      .display-huge { font-size: 80px; }
-      .grid-plan { grid-template-columns: repeat(2, 1fr); }
-      .botanical-img { width: 100%; height: 50vh; opacity: 0.5; }
-    }
-    @media (max-width: 600px) {
-      .display-huge { font-size: 60px; }
-      .grid-plan { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-    }
-  </style>
+  <!-- Estilos da Aplicação -->
+  <link rel="stylesheet" href="front/style.css">
 </head>
 <body>
 
-  <!-- Marquee (Arva) -->
-  <div class="marquee-strip">
-    <div class="marquee-content">
-      <span class="marquee-item">Lançamento do Conecta Agro 1.0</span>
-      <span class="marquee-item">Soluções Regenerativas para o Campo</span>
-      <span class="marquee-item">Design Híbrido</span>
-      <span class="marquee-item">Lançamento do Conecta Agro 1.0</span>
-      <span class="marquee-item">Soluções Regenerativas para o Campo</span>
-      <span class="marquee-item">Design Híbrido</span>
+  <!-- ====================================================================
+       TELA INICIAL — HERO EM TELA CHEIA
+       Fundo: imagem local (assets/campo.jpg) desfocada + overlay verde-escuro.
+       ==================================================================== -->
+  <section id="tela-inicio" class="tela hero ativa" aria-labelledby="hero-titulo">
+
+    <!-- Camada de fundo (apenas ela recebe o blur).
+         Para trocar a imagem, substitua o arquivo assets/campo.jpg
+         ou altere o caminho em front/style.css (.hero-fundo). -->
+    <div class="hero-fundo" role="img"
+         aria-label="Paisagem agrícola ao amanhecer, com colinas verdes e linhas de plantio"></div>
+
+    <!-- Camada escura translúcida para dar leitura ao texto -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- Conteúdo em primeiro plano -->
+    <div class="hero-conteudo">
+      <p class="hero-selo fade-in">🌱 Registro de atividades de campo</p>
+
+      <h1 id="hero-titulo" class="hero-titulo fade-in">Conecta Agro</h1>
+
+      <p class="hero-descricao fade-in">
+        Registre as atividades do campo de forma simples e organizada.
+        Seus dados ficam salvos aqui no navegador — sem internet, sem cadastro, sem complicação.
+      </p>
+
+      <div class="hero-acoes fade-in">
+        <button type="button" id="btn-ir-novo-registro" class="btn-hero btn-hero--principal">
+          ✏️ Iniciar coleta
+        </button>
+        <button type="button" id="btn-ir-ver-registros" class="btn-hero btn-hero--secundario">
+          📋 Ver registros
+        </button>
+      </div>
+
+      <p class="hero-stat fade-in" id="inicio-total" aria-live="polite">0 registros salvos</p>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       NOVO REGISTRO (Formulário)
+       ==================================================================== -->
+  <section id="tela-novo-registro" class="tela" aria-labelledby="titulo-novo-registro">
+
+    <header class="tela-header">
+      <button type="button" id="btn-voltar-form" class="btn-voltar" title="Voltar ao início">← Voltar</button>
+      <h2 id="titulo-novo-registro" class="tela-titulo">Novo Registro</h2>
+    </header>
+
+    <form id="formulario-registro" novalidate>
+
+      <!-- Data da atividade -->
+      <div class="campo">
+        <label for="campo-data">Data da atividade <span class="obrigatorio">*</span></label>
+        <input type="date" id="campo-data" class="pill-input" required>
+      </div>
+
+      <!-- Responsável -->
+      <div class="campo">
+        <label for="campo-responsavel">Nome do responsável <span class="obrigatorio">*</span></label>
+        <input type="text" id="campo-responsavel" class="pill-input" placeholder="Ex: João da Silva" required>
+      </div>
+
+      <!-- Área / Talhão -->
+      <div class="campo">
+        <label for="campo-area">Área ou talhão <span class="obrigatorio">*</span></label>
+        <input type="text" id="campo-area" class="pill-input" placeholder="Ex: Talhão 3 - Horta" required>
+      </div>
+
+      <!-- Cultura -->
+      <div class="campo">
+        <label for="campo-cultura">Cultura <span class="obrigatorio">*</span></label>
+        <select id="campo-cultura" class="pill-input" required>
+          <option value="">Selecione a cultura...</option>
+          <option value="Milho">Milho</option>
+          <option value="Feijão">Feijão</option>
+          <option value="Mandioca">Mandioca</option>
+          <option value="Tomate">Tomate</option>
+          <option value="Capim">Capim</option>
+          <option value="Outra">Outra</option>
+        </select>
+      </div>
+
+      <!-- Tipo de atividade -->
+      <div class="campo">
+        <label for="campo-atividade">Tipo de atividade <span class="obrigatorio">*</span></label>
+        <select id="campo-atividade" class="pill-input" required>
+          <option value="">Selecione a atividade...</option>
+          <option value="Plantio">Plantio</option>
+          <option value="Irrigação">Irrigação</option>
+          <option value="Adubação">Adubação</option>
+          <option value="Controle de pragas">Controle de pragas</option>
+          <option value="Colheita">Colheita</option>
+          <option value="Inspeção">Inspeção</option>
+          <option value="Manutenção">Manutenção</option>
+        </select>
+      </div>
+
+      <!-- Condição da área -->
+      <fieldset class="campo campo-fieldset">
+        <legend>Condição da área <span class="obrigatorio">*</span></legend>
+        <div class="condicao-opcoes">
+          <label class="radio-condicao radio-boa">
+            <input type="radio" name="condicao" value="boa" required>
+            <span>🟢 Boa</span>
+          </label>
+          <label class="radio-condicao radio-atencao">
+            <input type="radio" name="condicao" value="atenção">
+            <span>🟡 Atenção</span>
+          </label>
+          <label class="radio-condicao radio-critica">
+            <input type="radio" name="condicao" value="crítica">
+            <span>🔴 Crítica</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Observações -->
+      <div class="campo">
+        <label for="campo-obs">Observações <span class="opcional">(opcional)</span></label>
+        <textarea id="campo-obs" class="pill-input campo-textarea" placeholder="Descreva o que observou no campo..."></textarea>
+      </div>
+
+      <!-- Mensagem de erro geral -->
+      <div id="msg-erro-form" class="msg-erro" role="alert" style="display:none;"></div>
+
+      <!-- Botões -->
+      <div class="form-acoes">
+        <button type="submit" class="btn-pill btn-pill--primary btn-grande">Salvar Registro</button>
+        <button type="reset" id="btn-limpar-form" class="btn-pill btn-pill--ghost">Limpar</button>
+      </div>
+
+    </form>
+  </section>
+
+  <!-- ====================================================================
+       LISTA DE REGISTROS
+       ==================================================================== -->
+  <section id="tela-registros" class="tela" aria-labelledby="titulo-registros">
+
+    <header class="tela-header">
+      <button type="button" id="btn-voltar-lista" class="btn-voltar" title="Voltar ao início">← Voltar</button>
+      <h2 id="titulo-registros" class="tela-titulo">Registros</h2>
+      <span class="contador" id="contador-registros">0 registros</span>
+    </header>
+
+    <!-- Filtros -->
+    <div class="filtros-barra">
+      <label for="filtro-busca" class="sr-only">Buscar registros</label>
+      <input type="text" id="filtro-busca" class="pill-input" placeholder="Buscar por responsável, área ou cultura...">
+
+      <div class="filtros-selects">
+        <label for="filtro-atividade" class="sr-only">Filtrar por atividade</label>
+        <select id="filtro-atividade" class="pill-input filtro-select">
+          <option value="">Todas as atividades</option>
+          <option value="Plantio">Plantio</option>
+          <option value="Irrigação">Irrigação</option>
+          <option value="Adubação">Adubação</option>
+          <option value="Controle de pragas">Controle de pragas</option>
+          <option value="Colheita">Colheita</option>
+          <option value="Inspeção">Inspeção</option>
+          <option value="Manutenção">Manutenção</option>
+        </select>
+
+        <label for="filtro-condicao" class="sr-only">Filtrar por condição</label>
+        <select id="filtro-condicao" class="pill-input filtro-select">
+          <option value="">Todas as condições</option>
+          <option value="boa">Boa</option>
+          <option value="atenção">Atenção</option>
+          <option value="crítica">Crítica</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Container de cards -->
+    <div id="lista-registros" class="lista-cards"></div>
+
+    <!-- Estado vazio -->
+    <div id="estado-vazio" class="estado-vazio" style="display:none;">
+      <p class="vazio-titulo">Nenhum registro encontrado</p>
+      <p class="vazio-desc">Crie um novo registro ou altere os filtros.</p>
+    </div>
+
+    <!-- Restaurar demo -->
+    <div class="demo-area">
+      <button type="button" id="btn-restaurar-demo" class="btn-pill btn-pill--ghost">
+        🔄 Restaurar dados de demonstração
+      </button>
+    </div>
+
+  </section>
+
+  <!-- Toast de notificação -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Diálogo de confirmação de exclusão -->
+  <div id="dialogo-excluir" class="dialogo-overlay" role="dialog" aria-modal="true" aria-labelledby="dialogo-texto" style="display:none;">
+    <div class="dialogo-caixa">
+      <p id="dialogo-texto" class="dialogo-texto">Tem certeza que deseja excluir este registro?</p>
+      <div class="dialogo-acoes">
+        <button type="button" id="btn-confirmar-excluir" class="btn-pill btn-pill--danger">Sim, excluir</button>
+        <button type="button" id="btn-cancelar-excluir" class="btn-pill btn-pill--ghost">Cancelar</button>
+      </div>
     </div>
   </div>
 
-  <!-- Nav (Leandra) -->
-  <nav class="nav-header">
-    <a href="#" class="brand-logo">▲ PRAXIS / CONECTA AGRO</a>
-    <div class="nav-links">
-      <a href="#planos">O Plano</a>
-      <a href="#">Manifesto</a>
-    </div>
-    <a href="front/index.html" class="link-hairline" style="font-size: 14px; font-weight: 500;">ACESSAR SISTEMA ↗</a>
-  </nav>
-
-  <!-- Hero (Hybrid: Massive Type + Pill Buttons) -->
-  <section class="hero">
-    <div class="hero-text-container">
-      <h1 class="display-huge">Dados<br>agronômicos<br>precisos.</h1>
-      <div class="hero-actions">
-        <a href="front/index.html" class="btn-pill btn-pill--primary">Iniciar Coleta</a>
-        <a href="#planos" class="btn-pill btn-pill--ghost">Ler Documentação</a>
-      </div>
-    </div>
-    <!-- Botanical Photo -->
-    <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?q=80&w=1470&auto=format&fit=crop" alt="Botanical Nettle" class="botanical-img">
-  </section>
-
-  <!-- Plan Section (Hairline Grid) -->
-  <section id="planos" class="plan-section">
-    <h2 class="section-title">Plano de Implementação</h2>
-    
-    <div class="grid-plan">
-      
-      <div class="plan-cell">
-        <div class="cell-num">01 // CONCLUÍDA</div>
-        <h3 class="cell-title">Design System</h3>
-        <p class="cell-desc">Criação do sistema híbrido unindo a estética Arva com o minimalismo táctil de Leandra-isler. Fundo Vellum e linhas hairline.</p>
-      </div>
-
-      <div class="plan-cell">
-        <div class="cell-num">02 // CONCLUÍDA</div>
-        <h3 class="cell-title">Estrutura HTML5</h3>
-        <p class="cell-desc">Adaptação da interface web para suportar grids divididos por linhas finas e elementos interativos em formato pílula.</p>
-      </div>
-
-      <div class="plan-cell">
-        <div class="cell-num">03 // PENDENTE</div>
-        <h3 class="cell-title">Lógica JS</h3>
-        <p class="cell-desc">Motor funcional de gerenciamento de estado e persistência local (LocalStorage).</p>
-      </div>
-
-    </div>
-  </section>
-
+  <script src="front/script.js"></script>
 </body>
 </html>

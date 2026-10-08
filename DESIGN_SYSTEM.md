@@ -27,7 +27,7 @@ Para criar um sistema único e proprietário para o Conecta Agro, fundimos as fo
 | :--- | :--- | :--- |
 | `--color-forest-ink` | `#07503f` | **(Arva)** A cor principal da marca, usada para texto principal, botões preenchidos e linhas (hairlines). |
 | `--color-aged-ink` | `#1e211e` | **(Leandra)** Usado para textos secundários e parágrafos de alta densidade. |
-| `--color-vivid-lime` | `#e8fe85` | **(Arva)** O único ponto de cor vibrante. Usado no Marquee ou em micro-alertas. |
+| `--color-vivid-lime` | `#e8fe85` | **(Arva)** O único ponto de cor vibrante. Usado no botão principal do hero, no foco visível sobre fundo escuro e em micro-alertas. |
 
 ### 2.3 Cores de Risco (Semântica)
 Adaptadas para fluir no Vellum sem gritar como um "SaaS genérico":
