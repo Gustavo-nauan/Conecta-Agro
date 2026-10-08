@@ -37,7 +37,7 @@
 
       <p class="hero-descricao fade-in">
         Registre as atividades do campo de forma simples e organizada.
-        Seus dados ficam salvos aqui no navegador — sem internet, sem cadastro, sem complicação.
+        Seus dados ficam salvos aqui no navegador sem internet, sem cadastro, sem complicação.
       </p>
 
       <div class="hero-acoes fade-in">
@@ -113,7 +113,7 @@
       </div>
 
       <!-- Condição da área -->
-      <fieldset class="campo campo-fieldset">
+      <fieldset class="campo campo-fieldset campo--cheio">
         <legend>Condição da área <span class="obrigatorio">*</span></legend>
         <div class="condicao-opcoes">
           <label class="radio-condicao radio-boa">
@@ -132,16 +132,16 @@
       </fieldset>
 
       <!-- Observações -->
-      <div class="campo">
+      <div class="campo campo--cheio">
         <label for="campo-obs">Observações <span class="opcional">(opcional)</span></label>
         <textarea id="campo-obs" class="pill-input campo-textarea" placeholder="Descreva o que observou no campo..."></textarea>
       </div>
 
       <!-- Mensagem de erro geral -->
-      <div id="msg-erro-form" class="msg-erro" role="alert" style="display:none;"></div>
+      <div id="msg-erro-form" class="msg-erro campo--cheio" role="alert" style="display:none;"></div>
 
       <!-- Botões -->
-      <div class="form-acoes">
+      <div class="form-acoes campo--cheio">
         <button type="submit" class="btn-pill btn-pill--primary btn-grande">Salvar Registro</button>
         <button type="reset" id="btn-limpar-form" class="btn-pill btn-pill--ghost">Limpar</button>
       </div>
@@ -161,14 +161,16 @@
     </header>
 
     <!-- Filtros -->
-    <div class="filtros-barra">
-      <label for="filtro-busca" class="sr-only">Buscar registros</label>
-      <input type="text" id="filtro-busca" class="pill-input" placeholder="Buscar por responsável, área ou cultura...">
+    <div class="filtros-barra" role="search" aria-label="Filtros de registros">
+      <div class="filtro-campo filtro-campo--busca">
+        <label for="filtro-busca">Buscar</label>
+        <input type="text" id="filtro-busca" class="pill-input" placeholder="Buscar por responsável, área ou cultura">
+      </div>
 
-      <div class="filtros-selects">
-        <label for="filtro-atividade" class="sr-only">Filtrar por atividade</label>
+      <div class="filtro-campo">
+        <label for="filtro-atividade">Tipo de atividade</label>
         <select id="filtro-atividade" class="pill-input filtro-select">
-          <option value="">Todas as atividades</option>
+          <option value="">Todas</option>
           <option value="Plantio">Plantio</option>
           <option value="Irrigação">Irrigação</option>
           <option value="Adubação">Adubação</option>
@@ -177,14 +179,20 @@
           <option value="Inspeção">Inspeção</option>
           <option value="Manutenção">Manutenção</option>
         </select>
+      </div>
 
-        <label for="filtro-condicao" class="sr-only">Filtrar por condição</label>
+      <div class="filtro-campo">
+        <label for="filtro-condicao">Condição da área</label>
         <select id="filtro-condicao" class="pill-input filtro-select">
-          <option value="">Todas as condições</option>
+          <option value="">Todas</option>
           <option value="boa">Boa</option>
           <option value="atenção">Atenção</option>
           <option value="crítica">Crítica</option>
         </select>
+      </div>
+
+      <div class="filtro-campo filtro-campo--acao">
+        <button type="button" id="btn-limpar-filtros" class="btn-pill btn-pill--ghost">Limpar filtros</button>
       </div>
     </div>
 
@@ -195,13 +203,6 @@
     <div id="estado-vazio" class="estado-vazio" style="display:none;">
       <p class="vazio-titulo">Nenhum registro encontrado</p>
       <p class="vazio-desc">Crie um novo registro ou altere os filtros.</p>
-    </div>
-
-    <!-- Restaurar demo -->
-    <div class="demo-area">
-      <button type="button" id="btn-restaurar-demo" class="btn-pill btn-pill--ghost">
-        Restaurar dados de demonstração
-      </button>
     </div>
 
   </section>

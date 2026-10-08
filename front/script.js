@@ -450,14 +450,14 @@ function confirmarExclusao() {
 }
 
 // ============================================================================
-// 11. RESTAURAR DADOS DE DEMONSTRAÇÃO
+// 11. LIMPAR FILTROS
 // ============================================================================
 
-function restaurarDemo() {
-  salvarRegistros(DADOS_DEMO);
+function limparFiltros() {
+  document.getElementById('filtro-busca').value = '';
+  document.getElementById('filtro-atividade').value = '';
+  document.getElementById('filtro-condicao').value = '';
   renderizarRegistros();
-  atualizarContadorInicio();
-  mostrarToast('Dados de demonstração restaurados!', 'sucesso');
 }
 
 // ============================================================================
@@ -572,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Cancelar exclusão
   document.getElementById('btn-cancelar-excluir').addEventListener('click', fecharDialogo);
 
-  // ---- RESTAURAR DEMO ----
-  document.getElementById('btn-restaurar-demo').addEventListener('click', restaurarDemo);
+  // ---- LIMPAR FILTROS ----
+  document.getElementById('btn-limpar-filtros').addEventListener('click', limparFiltros);
 
 });

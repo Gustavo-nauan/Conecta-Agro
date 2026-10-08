@@ -298,12 +298,21 @@ a:focus-visible,
    FORMULÁRIO (Tela Novo Registro)
    ========================================================================== */
 #formulario-registro {
-  max-width: 600px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 32px 24px 60px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 24px;
+}
+
+/* Campos que ocupam a largura toda do formulário */
+.campo--cheio {
+  grid-column: 1 / -1;
+}
+
+.campo {
+  min-width: 0;
 }
 
 .campo-fieldset {
@@ -345,6 +354,16 @@ a:focus-visible,
   outline: none;
   transition: background-color 0.2s;
   -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Selects: seta indicativa (SVG local) para não parecerem ovais vazios */
+select.pill-input {
+  padding-right: 48px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5l6 6 6-6' fill='none' stroke='%2307503f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
 }
 
 .pill-input:focus {
@@ -455,22 +474,39 @@ a:focus-visible,
    FILTROS (Tela Lista de Registros)
    ========================================================================== */
 .filtros-barra {
-  padding: 20px 24px;
+  padding: 20px var(--pad-lateral);
   border-bottom: var(--hairline);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: end;
 }
 
-.filtros-selects {
+.filtro-campo {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.filtro-campo > label {
+  font-size: 13px;
+  font-weight: var(--peso-destaque);
+  color: var(--color-aged-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Mesma altura para busca, selects e botão */
+.filtros-barra .pill-input,
+.filtros-barra .btn-pill {
+  height: 48px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .filtro-select {
-  flex: 1;
-  font-size: 14px;
-  padding: 12px 16px;
+  font-size: var(--tamanho-texto);
 }
 
 /* ==========================================================================
@@ -615,14 +651,6 @@ a:focus-visible,
   color: var(--color-aged-ink);
 }
 
-/* ==========================================================================
-   BOTÃO RESTAURAR DEMO
-   ========================================================================== */
-.demo-area {
-  text-align: center;
-  padding: 24px;
-  border-top: var(--hairline);
-}
 
 /* ==========================================================================
    TOAST (Notificação flutuante)
@@ -748,10 +776,6 @@ a:focus-visible,
     grid-template-columns: 1fr;
   }
 
-  .filtros-selects {
-    flex-direction: column;
-  }
-
   .card-topo {
     flex-direction: column;
     gap: 8px;
@@ -771,22 +795,21 @@ a:focus-visible,
   #formulario-registro {
     padding: 48px 40px 80px;
   }
+}
+
+/* Desktop: formulário em 2 colunas e filtros na mesma linha */
+@media (min-width: 900px) {
+  #formulario-registro {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+  }
+
+  .form-acoes {
+    max-width: 460px;
+  }
 
   .filtros-barra {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .filtros-barra .pill-input:first-child {
-    flex: 2;
-  }
-
-  .filtros-selects {
-    flex: 1;
-  }
-
-  .lista-cards {
-    padding: 32px 40px;
+    grid-template-columns: 2fr 1fr 1fr auto;
   }
 }
 
@@ -808,44 +831,47 @@ a:focus-visible,
 /* ==========================================================================
    PÁGINA DE REGISTROS — CARDS EM DESTAQUE
    ========================================================================== */
-#tela-registros { background-color: #e6efdc; }
-#tela-registros .tela-header,
-#tela-registros .filtros-barra { background-color: #e6efdc; }
-#tela-registros .demo-area { border-top-color: rgba(7, 80, 63, 0.25); }
-
+/* Mesmo fundo e mesmo cabeçalho das outras páginas; conteúdo alinhado ao contêiner de 1100px */
 .lista-cards {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  padding: 24px 20px;
+  padding: 24px var(--pad-lateral);
+  align-items: stretch;
 }
 
+/* Cards destacados, porém suaves e na mesma paleta do app */
 .registro-card {
   position: relative;
-  background-color: var(--color-pure-white);
-  border: 1px solid rgba(7, 80, 63, 0.18);
-  border-left: 8px solid var(--color-forest-ink);
-  border-radius: 16px;
-  padding: 24px 24px 20px;
-  box-shadow: 0 6px 18px rgba(7, 80, 63, 0.14);
+  display: flex;
+  flex-direction: column;
+  background-color: #fbf5e8;
+  border: 1px solid rgba(7, 80, 63, 0.22);
+  border-left: 6px solid var(--color-forest-ink);
+  border-radius: 20px;
+  padding: 22px 24px 18px;
+  box-shadow: 0 2px 8px rgba(7, 80, 63, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .registro-card:hover {
-  background-color: var(--color-pure-white);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 26px rgba(7, 80, 63, 0.22);
+  background-color: #fbf5e8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(7, 80, 63, 0.14);
 }
-.registro-card.condicao-boa    { border-left-color: var(--color-forest-ink); }
+.registro-card.condicao-boa     { border-left-color: var(--color-forest-ink); }
 .registro-card.condicao-atencao { border-left-color: #d4a017; }
 .registro-card.condicao-critica { border-left-color: var(--color-status-danger); }
 
+/* Rodapé sempre colado embaixo: cards com altura uniforme na grade */
+.registro-card .card-rodape { margin-top: auto; }
+
 .card-cultura { font-size: var(--tamanho-texto); font-weight: var(--peso-destaque); color: var(--color-forest-ink); }
-.detalhe-chip { font-size: var(--tamanho-pequeno); background-color: #f3f7ee; }
+.detalhe-chip { font-size: var(--tamanho-pequeno); background-color: transparent; }
 
 @media (min-width: 768px) {
-  .lista-cards { grid-template-columns: repeat(2, 1fr); padding: 32px 40px; }
+  .lista-cards { grid-template-columns: repeat(2, 1fr); padding-top: 32px; padding-bottom: 32px; }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1100px) {
   .lista-cards { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -888,4 +914,27 @@ a:focus-visible,
 
 @media (prefers-reduced-motion: reduce) {
   .registro-card, .registro-card:hover, .fab, .fab:hover { transition: none; transform: none; }
+}
+
+/* ==========================================================================
+   CONTÊINER CENTRALIZADO (max-width 1100px) E CABEÇALHOS ALINHADOS
+   ========================================================================== */
+:root {
+  --pad-lateral: max(24px, calc((100% - 1100px) / 2));
+}
+
+.tela-header {
+  padding-left: var(--pad-lateral);
+  padding-right: var(--pad-lateral);
+}
+
+/* Na página do formulário o cabeçalho acompanha a largura do formulário (860px) */
+#tela-novo-registro .tela-header {
+  padding-left: max(24px, calc((100% - 780px) / 2));
+  padding-right: max(24px, calc((100% - 780px) / 2));
+}
+
+.estado-vazio {
+  max-width: 1100px;
+  margin: 0 auto;
 }
