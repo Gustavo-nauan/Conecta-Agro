@@ -3,346 +3,422 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conecta Agro — Monitoramento e Medições de Campo</title>
-  <meta name="description" content="Sistema de registro e consulta de medições agronômicas e observações de campo em pequenas e médias propriedades agrícolas.">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Design System & Estilos da Aplicação -->
+  <title>Conecta Agro</title>
   <link rel="stylesheet" href="design-system.css">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos Específicos da Landing Page */
+
+    /* Marquee Strip */
+    .marquee-strip {
+      background-color: var(--color-vivid-lime);
+      height: 32px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--color-moss);
+    }
+    
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-charcoal);
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 40px;
+    }
+    
+    .marquee-icon {
+      margin-right: 8px;
+    }
+
+    /* Header Bar */
+    .header-bar {
+      background-color: var(--color-forest-ink);
+      height: 60px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--color-pure-white);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .brand-logo {
+      color: var(--color-pure-white);
+      font-family: var(--font-reckless);
+      font-size: 28px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .brand-logo span {
+      color: var(--color-vivid-lime);
+      font-size: 24px;
+    }
+
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-nav-pill {
+      background-color: var(--color-pure-white);
+      color: var(--color-charcoal);
+      border-radius: var(--radius-nav-pills);
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-body-sm);
+    }
+
+    /* Hero Section (Video / 3D) */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: var(--color-forest-ink);
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6; /* Escurece um pouco para o texto brilhar */
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+
+    .hero-headline {
+      color: var(--color-pure-white);
+      font-size: var(--text-display);
+      line-height: var(--leading-display);
+      letter-spacing: var(--tracking-display);
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--color-pure-white);
+      font-size: 13px;
+      z-index: 2;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Quilted Cards Section (Planos) */
+    .plan-section {
+      background-color: var(--color-bone);
+      padding: 100px 20px;
+    }
+
+    .section-container {
+      max-width: var(--page-max-width, 1200px);
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: var(--text-heading-lg);
+      font-weight: 300;
+      color: var(--color-charcoal);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: var(--text-body);
+      color: var(--color-charcoal);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .quilt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .quilt-card {
+      border-radius: var(--radius-cards);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform 0.2s;
+    }
+
+    .quilt-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-sky { background-color: var(--color-sky-card); }
+    .card-peach { background-color: var(--color-peach-card); }
+    .card-sage { background-color: var(--color-sage-card); }
+    .card-bone { background-color: var(--color-bone); border: 1px solid var(--color-moss); }
+
+    .card-phase {
+      font-family: var(--font-inter);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      color: var(--color-forest-ink);
+    }
+
+    .card-title {
+      font-family: var(--font-reckless);
+      font-size: var(--text-subheading);
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: var(--color-charcoal);
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-size: 15px;
+      color: var(--color-charcoal);
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .card-status {
+      display: inline-flex;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 500;
+      gap: 6px;
+    }
+
+    .status-done { color: var(--color-forest-ink); }
+    .status-active { color: #d97706; }
+    .status-pending { color: var(--color-pewter); }
+
+    /* Footer / Interstitial */
+    .forest-interstitial {
+      background-color: var(--color-forest-ink);
+      padding: 80px 20px;
+      color: var(--color-pure-white);
+      text-align: center;
+    }
+
+    .forest-interstitial h2 {
+      color: var(--color-pure-white);
+      font-size: var(--text-heading);
+      font-weight: 300;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .quilt-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-headline {
+        font-size: 50px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .quilt-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero-headline {
+        font-size: 40px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- =========================================================================
-       1. CABEÇALHO SUPERIOR (TOPBAR)
-       ========================================================================= -->
-  <header class="ca-topbar" id="main-header">
-    <div class="ca-topbar__inner">
-      <div class="ca-brand-block">
-        <div class="ca-brand-logo" aria-hidden="true">🌱</div>
-        <div>
-          <h1 class="ca-brand-title">Conecta Agro</h1>
-          <p class="ca-brand-tagline">Raiz & Precisão • Monitoramento de Campo</p>
-        </div>
-      </div>
+  <!-- Marquee Strip -->
+  <div class="marquee-strip">
+    <div class="marquee-content">
+      <span class="marquee-item"><span class="marquee-icon">✓</span> Lançamento do Conecta Agro 1.0 em Breve</span>
+      <span class="marquee-item"><span class="marquee-icon">✓</span> Soluções Regenerativas para o Campo</span>
+      <span class="marquee-item"><span class="marquee-icon">✓</span> Integração com IoT e Sensores</span>
+      <span class="marquee-item"><span class="marquee-icon">✓</span> Monitoramento e Medições com Precisão</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item"><span class="marquee-icon">✓</span> Lançamento do Conecta Agro 1.0 em Breve</span>
+      <span class="marquee-item"><span class="marquee-icon">✓</span> Soluções Regenerativas para o Campo</span>
+      <span class="marquee-item"><span class="marquee-icon">✓</span> Integração com IoT e Sensores</span>
+      <span class="marquee-item"><span class="marquee-icon">✓</span> Monitoramento e Medições com Precisão</span>
+    </div>
+  </div>
 
-      <div class="ca-topbar__meta">
-        <div class="ca-status-pill" title="Os dados são mantidos no navegador via LocalStorage">
-          <span class="ca-status-pill__dot"></span>
-          <span class="ca-status-pill__text">Modo Local Ativo</span>
-        </div>
-        <button id="btn-demo-seed" class="ca-btn ca-btn--outline ca-btn--sm" title="Restaura 4 medições fictícias para testes">
-          🔄 Restaurar Dados Demo
-        </button>
-      </div>
+  <!-- Header Bar -->
+  <header class="header-bar">
+    <div class="nav-links">
+      <a href="#solucoes">Para Produtores</a>
+      <a href="#solucoes">Para Parceiros</a>
+      <a href="#planos">Plano de Implementação</a>
+    </div>
+    
+    <a href="#" class="brand-logo">
+      <span>▲</span> arva
+    </a>
+
+    <div class="header-cta">
+      <a href="front/index.html" class="btn-nav-pill">Acessar App</a>
     </div>
   </header>
 
-  <!-- =========================================================================
-       CONTEÚDO PRINCIPAL
-       ========================================================================= -->
-  <div class="ca-app-wrapper">
+  <!-- Hero Section with Video -->
+  <section class="hero-section">
+    <!-- Vídeo de fundo simulando a interação agronômica/3D -->
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="https://cdn.pixabay.com/video/2020/05/26/40236-424177579_large.mp4" type="video/mp4">
+      Seu navegador não suporta vídeos.
+    </video>
 
-    <!-- 2. FAIXA DE MÉTRICAS RÁPIDAS (KPIS DE CAMPO) -->
-    <section class="ca-kpi-section" aria-label="Métricas Rápidas de Campo">
-      <div class="ca-kpi-grid">
+    <div class="hero-content">
+      <h1 class="hero-headline">Cadeias de suprimento regenerativas para um mundo melhor</h1>
+      <div class="hero-actions">
+        <a href="front/index.html" class="btn-pill btn-pill--primary">VER APLICAÇÃO</a>
+        <a href="#planos" class="btn-pill btn-pill--ghost">NOSSO PLANO</a>
+      </div>
+    </div>
+
+    <a href="#planos" class="scroll-cue">
+      Scroll to Explore
+      <span>↓</span>
+    </a>
+  </section>
+
+  <!-- Quilted Card Section: Plano de Implementação -->
+  <section id="planos" class="plan-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Plano de Implementação</h2>
+        <p class="section-subtitle">As etapas para a construção da aplicação web Conecta Agro baseada no desenvolvimento iterativo por fases.</p>
+      </div>
+
+      <div class="quilt-grid">
         
-        <!-- Total de Medições -->
-        <div class="ca-kpi-card" id="kpi-card-total">
-          <div class="ca-kpi-icon ca-kpi-icon--green">🌾</div>
-          <div class="ca-kpi-content">
-            <span class="ca-kpi-label">Total de Medições</span>
-            <div class="ca-kpi-value" id="kpi-total-val">0</div>
-          </div>
+        <!-- Fase 1 -->
+        <div class="quilt-card card-sky">
+          <div class="card-phase">Fase 1</div>
+          <h3 class="card-title">Fundação & Design System</h3>
+          <p class="card-desc">Criação de tokens de cores, tipografia e diretrizes. Implementação do arquivo base de CSS e variáveis globais para garantir a consistência visual.</p>
+          <div class="card-status status-done">✓ Concluída</div>
         </div>
 
-        <!-- Umidade Média do Solo -->
-        <div class="ca-kpi-card" id="kpi-card-moisture">
-          <div class="ca-kpi-icon ca-kpi-icon--blue">💧</div>
-          <div class="ca-kpi-content">
-            <span class="ca-kpi-label">Umidade Média Solo</span>
-            <div class="ca-kpi-value" id="kpi-moisture-val">--%</div>
-          </div>
+        <!-- Fase 2 -->
+        <div class="quilt-card card-peach">
+          <div class="card-phase">Fase 2</div>
+          <h3 class="card-title">Estrutura Semântica</h3>
+          <p class="card-desc">Implementação do documento HTML5 completo, acessível e organizado em seções estratégicas. Painel de KPIs e Grid principal.</p>
+          <div class="card-status status-done">✓ Concluída</div>
         </div>
 
-        <!-- Temperatura Média -->
-        <div class="ca-kpi-card" id="kpi-card-temp">
-          <div class="ca-kpi-icon ca-kpi-icon--amber">🌡️</div>
-          <div class="ca-kpi-content">
-            <span class="ca-kpi-label">Temp. Média</span>
-            <div class="ca-kpi-value" id="kpi-temp-val">--°C</div>
-          </div>
+        <!-- Fase 3 -->
+        <div class="quilt-card card-sage">
+          <div class="card-phase">Fase 3</div>
+          <h3 class="card-title">Camada Lógica do Cliente</h3>
+          <p class="card-desc">Motor funcional de gerenciamento de estado, validação, persistência no LocalStorage e manipulação reativa do DOM.</p>
+          <div class="card-status status-active">O Em Andamento</div>
         </div>
 
-        <!-- Talhões com Alerta Fitossanitário -->
-        <div class="ca-kpi-card" id="kpi-card-alerts">
-          <div class="ca-kpi-icon ca-kpi-icon--red">⚠️</div>
-          <div class="ca-kpi-content">
-            <span class="ca-kpi-label">Talhões em Alerta</span>
-            <div class="ca-kpi-value" id="kpi-alerts-val">0</div>
-          </div>
+        <!-- Fase 4 -->
+        <div class="quilt-card card-bone">
+          <div class="card-phase">Fase 4</div>
+          <h3 class="card-title">Microinterações & Responsividade</h3>
+          <p class="card-desc">Aplicação fina dos estilos, garantindo a experiência em desktop e mobile com transições suaves e feedbacks visuais.</p>
+          <div class="card-status status-pending">○ Pendente</div>
+        </div>
+
+        <!-- Fase 5 -->
+        <div class="quilt-card card-sky">
+          <div class="card-phase">Fase 5</div>
+          <h3 class="card-title">Testes Técnicos</h3>
+          <p class="card-desc">Execução do roteiro de testes: persistência de dados (F5), inserção, exclusão e os limites de segurança da validação agronômica.</p>
+          <div class="card-status status-pending">○ Pendente</div>
+        </div>
+
+        <!-- Fase 6 -->
+        <div class="quilt-card card-peach">
+          <div class="card-phase">Fase 6</div>
+          <h3 class="card-title">Entrega & Relatório</h3>
+          <p class="card-desc">Consolidação das evidências de tela e geração do relatório executivo da atividade.</p>
+          <div class="card-status status-pending">○ Pendente</div>
         </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- 3. ÁREA DE TRABALHO PRINCIPAL (LAYOUT EM DUAS COLUNAS) -->
-    <main class="ca-main-grid" id="main-content">
+  <!-- Forest Interstitial -->
+  <section class="forest-interstitial">
+    <div class="section-container">
+      <h2>Pronto para escalar sua operação?</h2>
+      <a href="front/index.html" class="btn-pill btn-pill--primary" style="background-color: var(--color-pure-white); color: var(--color-forest-ink);">INICIAR AGORA</a>
+    </div>
+  </section>
 
-      <!-- =====================================================================
-           COLUNA 1: FORMULÁRIO DE REGISTRO DE CAMPO
-           ===================================================================== -->
-      <section class="ca-card ca-form-panel" aria-labelledby="form-title">
-        <header class="ca-card__header">
-          <div class="ca-card__header-icon">📝</div>
-          <div>
-            <h2 id="form-title" class="ca-card__title">Nova Medição de Campo</h2>
-            <p class="ca-card__subtitle">Registre as observações da ronda fitossanitária e do solo.</p>
-          </div>
-        </header>
-
-        <form id="form-measurement" novalidate>
-
-          <!-- Linha 1: Data/Hora e Talhão -->
-          <div class="ca-grid-2">
-            <div class="ca-form-group">
-              <label for="input-datetime" class="ca-label">
-                Data e Hora da Coleta <span class="ca-required">*</span>
-              </label>
-              <input 
-                type="datetime-local" 
-                id="input-datetime" 
-                name="dateTime" 
-                class="ca-input" 
-                required
-              >
-            </div>
-
-            <div class="ca-form-group">
-              <label for="input-field" class="ca-label">
-                Talhão / Lote <span class="ca-required">*</span>
-              </label>
-              <input 
-                type="text" 
-                id="input-field" 
-                name="field" 
-                class="ca-input" 
-                placeholder="Ex: Talhão 04 - Setor Norte" 
-                list="fields-suggestions" 
-                required
-              >
-              <datalist id="fields-suggestions">
-                <option value="Talhão 01 - Baixada">
-                <option value="Talhão 02 - Encosta Leste">
-                <option value="Talhão 03 - Pivô Central">
-                <option value="Talhão 04 - Setor Norte">
-                <option value="Talhão 08 - Colina Sul">
-              </datalist>
-            </div>
-          </div>
-
-          <!-- Linha 2: Cultura e Umidade do Solo -->
-          <div class="ca-grid-2">
-            <div class="ca-form-group">
-              <label for="input-crop" class="ca-label">
-                Cultura / Variedade <span class="ca-required">*</span>
-              </label>
-              <input 
-                type="text" 
-                id="input-crop" 
-                name="crop" 
-                class="ca-input" 
-                placeholder="Ex: Milho Safrinha DKB" 
-                list="crops-suggestions" 
-                required
-              >
-              <datalist id="crops-suggestions">
-                <option value="Milho Safrinha DKB">
-                <option value="Soja Intacta BMX">
-                <option value="Café Arábica Catuaí">
-                <option value="Feijão Carioca">
-                <option value="Algodão DP 1744">
-              </datalist>
-            </div>
-
-            <div class="ca-form-group">
-              <label for="input-moisture" class="ca-label">
-                Umidade do Solo (%) <span class="ca-required">*</span>
-              </label>
-              <div class="ca-input-affix">
-                <input 
-                  type="number" 
-                  id="input-moisture" 
-                  name="soilMoisture" 
-                  class="ca-input" 
-                  placeholder="0 a 100" 
-                  min="0" 
-                  max="100" 
-                  step="0.1" 
-                  required
-                >
-                <span class="ca-affix">%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Linha 3: Temperatura e Status de Pragas -->
-          <div class="ca-grid-2">
-            <div class="ca-form-group">
-              <label for="input-temp" class="ca-label">
-                Temperatura (°C) <span class="ca-required">*</span>
-              </label>
-              <div class="ca-input-affix">
-                <input 
-                  type="number" 
-                  id="input-temp" 
-                  name="temperature" 
-                  class="ca-input" 
-                  placeholder="Ex: 29.5" 
-                  min="-10" 
-                  max="60" 
-                  step="0.1" 
-                  required
-                >
-                <span class="ca-affix">°C</span>
-              </div>
-            </div>
-
-            <div class="ca-form-group">
-              <label class="ca-label" id="label-pest-status">
-                Status de Pragas / Risco <span class="ca-required">*</span>
-              </label>
-              
-              <!-- Segmented Selection para Pragas -->
-              <div class="ca-status-selector" role="radiogroup" aria-labelledby="label-pest-status">
-                <label class="ca-radio-chip ca-radio-chip--safe">
-                  <input type="radio" name="pestStatus" value="safe" checked>
-                  <span>🟢 Normal</span>
-                </label>
-                <label class="ca-radio-chip ca-radio-chip--warn">
-                  <input type="radio" name="pestStatus" value="warn">
-                  <span>🟡 Atenção</span>
-                </label>
-                <label class="ca-radio-chip ca-radio-chip--alert">
-                  <input type="radio" name="pestStatus" value="alert">
-                  <span>🟠 Alerta</span>
-                </label>
-                <label class="ca-radio-chip ca-radio-chip--danger">
-                  <input type="radio" name="pestStatus" value="danger">
-                  <span>🔴 Crítico</span>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Linha 4: Observações e Ações Recomendadas -->
-          <div class="ca-form-group">
-            <label for="input-observations" class="ca-label">
-              Observações e Ações de Manejo
-            </label>
-            <textarea 
-              id="input-observations" 
-              name="observations" 
-              class="ca-textarea" 
-              placeholder="Descreva sintomas observados no talhão, estágio vegetativo, incidência de lagartas, percevejos, ferrugem ou necessidade de irrigação..."
-            ></textarea>
-            <span class="ca-field-hint">Opcional. Auxilia na tomada de decisão da equipe técnica.</span>
-          </div>
-
-          <!-- Botões de Ação do Formulário -->
-          <div class="ca-form-actions">
-            <button type="submit" id="btn-submit-measurement" class="ca-btn ca-btn--primary">
-              💾 Salvar Medição
-            </button>
-            <button type="reset" id="btn-reset-form" class="ca-btn ca-btn--secondary">
-              🔄 Limpar
-            </button>
-          </div>
-
-        </form>
-      </section>
-
-      <!-- =====================================================================
-           COLUNA 2: PAINEL DE HISTÓRICO E CONSULTA
-           ===================================================================== -->
-      <section class="ca-card ca-records-panel" aria-labelledby="records-title">
-        <header class="ca-card__header ca-records-header">
-          <div>
-            <h2 id="records-title" class="ca-card__title">Histórico de Medições</h2>
-            <p class="ca-card__subtitle" id="records-counter-text">Carregando histórico...</p>
-          </div>
-        </header>
-
-        <!-- Barra de Filtros e Busca Rápida -->
-        <div class="ca-filter-bar">
-          <div class="ca-search-box">
-            <span class="ca-search-icon" aria-hidden="true">🔍</span>
-            <input 
-              type="text" 
-              id="search-input" 
-              class="ca-input ca-input--search" 
-              placeholder="Buscar por talhão ou cultura..." 
-              aria-label="Buscar histórico por talhão ou cultura"
-            >
-            <button type="button" id="btn-clear-search" class="ca-search-clear" style="display: none;" title="Limpar busca">✕</button>
-          </div>
-
-          <div class="ca-filter-status-box">
-            <select id="filter-status-select" class="ca-select ca-select--filter" aria-label="Filtrar por status fitossanitário">
-              <option value="all">Todos os Status</option>
-              <option value="safe">🟢 Apenas Normais</option>
-              <option value="warn">🟡 Apenas Atenção</option>
-              <option value="alert">🟠 Apenas Alerta</option>
-              <option value="danger">🔴 Apenas Críticos</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Lista Dinâmica de Registros de Campo -->
-        <div id="records-container" class="ca-records-list" role="region" aria-live="polite">
-          <!-- Os cards de medição serão inseridos dinamicamente pelo app.js -->
-        </div>
-
-        <!-- Estado Vazio (Empty State) -->
-        <div id="empty-state" class="ca-empty-state" style="display: none;">
-          <div class="ca-empty-state__icon">🌾</div>
-          <h3 class="ca-empty-state__title">Nenhuma medição encontrada</h3>
-          <p class="ca-empty-state__text" id="empty-state-message">
-            Não há registros compatíveis com os filtros selecionados. Tente ajustar a busca ou registrar uma nova medição.
-          </p>
-          <button type="button" id="btn-empty-reset" class="ca-btn ca-btn--secondary ca-btn--sm">
-            Limpar Filtros de Busca
-          </button>
-        </div>
-
-      </section>
-
-    </main>
-
-    <!-- =========================================================================
-         RODAPÉ INSTITUCIONAL
-         ========================================================================= -->
-    <footer class="ca-footer">
-      <div class="ca-footer__inner">
-        <p>
-          <strong>Conecta Agro</strong> — Protótipo de Registro de Medições e Observações de Campo.
-        </p>
-        <p class="ca-footer__sub">
-          Interface executada localmente • Dados persistidos no navegador via <code>LocalStorage</code> • Sem custos de infraestrutura.
-        </p>
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- Contêiner de Notificações Toast -->
-  <div id="toast-container" class="ca-toast-container" aria-live="assertive"></div>
-
-  <!-- Script Principal da Lógica -->
-  <script src="app.js"></script>
 </body>
 </html>

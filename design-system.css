@@ -1,86 +1,123 @@
 /* ==========================================================================
-   CONECTA AGRO — DESIGN SYSTEM (RAIZ & PRECISÃO)
-   Tokens CSS, Variáveis Globais e Componentes Base
+   CONECTA AGRO — DESIGN SYSTEM
+   Baseado nas diretrizes "Arva — Style Reference"
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;600&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  /* Marca Primária (Forest & Sprout) */
-  --ca-brand-deep: #0D2818;
-  --ca-brand-primary: #164E2E;
-  --ca-brand-hover: #227C4B;
-  --ca-brand-accent: #2EC475;
-  --ca-brand-light: #EAF7EE;
+  /* Colors */
+  --color-forest-ink: #07503f;
+  --color-vivid-lime: #e8fe85;
+  --color-bone: #f1efdf;
+  --color-pure-white: #ffffff;
+  --color-ash-gray: #efefef;
+  --color-charcoal: #212529;
+  --color-graphite: #353535;
+  --color-pewter: #6d6d6d;
+  --color-sky-card: #b2cee7;
+  --color-peach-card: #fceace;
+  --color-sage-card: #e6ecd5;
+  --color-moss: #c3cda7;
 
-  /* Cores da Terra & Safra */
-  --ca-earth-rich: #6E4032;
-  --ca-earth-terra: #A85A3F;
-  --ca-harvest-gold: #D97706;
-  --ca-harvest-light: #FEF3C7;
+  /* Typography — Font Families */
+  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-reckless: 'Cormorant Garamond', serif; /* Substituto para Reckless */
 
-  /* Neutros & Superfícies */
-  --ca-text-main: #111815;
-  --ca-text-muted: #4B554F;
-  --ca-text-light: #808B84;
-  --ca-border-light: #E2E6E2;
-  --ca-border-medium: #CBD2CB;
-  --ca-bg-app: #F7F9F6;
-  --ca-bg-surface: #FFFFFF;
-  --ca-bg-subtle: #EFF2EE;
+  /* Typography — Scale */
+  --text-caption: 12px;
+  --leading-caption: 1.5;
+  --tracking-caption: 0.025em;
+  --text-body-sm: 14px;
+  --leading-body-sm: 1.5;
+  --tracking-body-sm: 0.025em;
+  --text-body: 16px;
+  --leading-body: 1.52;
+  --tracking-body: -0.022em;
+  --text-subheading: 24px;
+  --leading-subheading: 1.24;
+  --tracking-subheading: -0.012em;
+  --text-heading-sm: 37px;
+  --leading-heading-sm: 1.22;
+  --tracking-heading-sm: -0.012em;
+  --text-heading: 45px;
+  --leading-heading: 1.06;
+  --tracking-heading: -0.012em;
+  --text-heading-lg: 57px;
+  --leading-heading-lg: 1.06;
+  --tracking-heading-lg: -0.022em;
+  --text-display: 80px;
+  --leading-display: 1;
+  --tracking-display: -0.037em;
 
-  /* Semântica e Alertas */
+  /* Spacing */
+  --spacing-5: 5px;
+  --spacing-8: 8px;
+  --spacing-10: 10px;
+  --spacing-12: 12px;
+  --spacing-15: 15px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-30: 30px;
+  --spacing-40: 40px;
+  --spacing-50: 50px;
+  --spacing-64: 64px;
+
+  /* Border Radius */
+  --radius-cards: 20px;
+  --radius-inputs: 33px;
+  --radius-buttons: 100px;
+  --radius-nav-pills: 110px;
+
+  /* Compatibility with existing front app */
+  --ca-brand-deep: var(--color-forest-ink);
+  --ca-brand-primary: var(--color-forest-ink);
+  --ca-brand-hover: #0a6b54;
+  --ca-brand-accent: var(--color-vivid-lime);
+  --ca-brand-light: var(--color-sage-card);
+  
+  --ca-earth-rich: var(--color-charcoal);
+  --ca-earth-terra: var(--color-graphite);
+  --ca-harvest-gold: var(--color-moss);
+  --ca-harvest-light: var(--color-peach-card);
+  
+  --ca-text-main: var(--color-charcoal);
+  --ca-text-muted: var(--color-pewter);
+  --ca-text-light: var(--color-ash-gray);
+  
+  --ca-border-light: var(--color-moss);
+  --ca-border-medium: var(--color-pewter);
+  
+  --ca-bg-app: var(--color-bone);
+  --ca-bg-surface: var(--color-pure-white);
+  --ca-bg-subtle: var(--color-bone);
+
+  --ca-font-sans: var(--font-inter);
+  --ca-font-display: var(--font-reckless);
+  
+  --ca-radius-sm: 8px;
+  --ca-radius-md: var(--radius-cards);
+  --ca-radius-lg: var(--radius-cards);
+  --ca-radius-full: 9999px;
+  
+  --ca-shadow-sm: none;
+  --ca-shadow-md: none;
+  --ca-shadow-lg: none;
+  --ca-transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Status Base Colors */
   --ca-status-safe: #15803D;
   --ca-status-safe-bg: #DCFCE7;
-  --ca-status-safe-border: #86EFAC;
-
   --ca-status-warn: #B45309;
   --ca-status-warn-bg: #FEF9C3;
-  --ca-status-warn-border: #FDE047;
-
   --ca-status-alert: #C2410C;
   --ca-status-alert-bg: #FFEDD5;
-  --ca-status-alert-border: #FDBA74;
-
   --ca-status-danger: #B91C1C;
   --ca-status-danger-bg: #FEE2E2;
-  --ca-status-danger-border: #FCA5A5;
-
   --ca-status-hydro: #0284C7;
   --ca-status-hydro-bg: #E0F2FE;
-  --ca-status-hydro-border: #7DD3FC;
-
-  /* Tipografia */
-  --ca-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --ca-font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-
-  /* Espaçamentos */
-  --ca-space-xxs: 4px;
-  --ca-space-xs: 8px;
-  --ca-space-sm: 12px;
-  --ca-space-md: 16px;
-  --ca-space-lg: 24px;
-  --ca-space-xl: 32px;
-  --ca-space-2xl: 48px;
-
-  /* Bordas e Raios */
-  --ca-radius-sm: 8px;
-  --ca-radius-md: 14px;
-  --ca-radius-lg: 20px;
-  --ca-radius-full: 9999px;
-
-  /* Sombras */
-  --ca-shadow-sm: 0 1px 3px rgba(17, 24, 21, 0.05), 0 1px 2px rgba(17, 24, 21, 0.04);
-  --ca-shadow-md: 0 6px 16px -2px rgba(22, 78, 46, 0.08), 0 3px 6px -2px rgba(17, 24, 21, 0.04);
-  --ca-shadow-lg: 0 14px 30px -4px rgba(13, 40, 24, 0.12), 0 6px 12px -3px rgba(17, 24, 21, 0.06);
-
-  /* Transições */
-  --ca-transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ==========================================================================
-   RESET & BASE
-   ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -88,231 +125,61 @@
 }
 
 body {
-  font-family: var(--ca-font-sans);
-  background-color: var(--ca-bg-app);
-  color: var(--ca-text-main);
-  line-height: 1.5;
+  font-family: var(--font-inter);
+  background-color: var(--color-bone);
+  color: var(--color-charcoal);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
   -webkit-font-smoothing: antialiased;
 }
 
-/* ==========================================================================
-   COMPONENTES: BADGES & STATUS CHIPS
-   ========================================================================== */
-.ca-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  border-radius: var(--ca-radius-full);
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  border: 1px solid transparent;
-}
-
-.ca-badge::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.ca-badge--safe {
-  background-color: var(--ca-status-safe-bg);
-  color: var(--ca-status-safe);
-  border-color: var(--ca-status-safe-border);
-}
-.ca-badge--safe::before { background-color: var(--ca-status-safe); }
-
-.ca-badge--warn {
-  background-color: var(--ca-status-warn-bg);
-  color: var(--ca-status-warn);
-  border-color: var(--ca-status-warn-border);
-}
-.ca-badge--warn::before { background-color: var(--ca-status-warn); }
-
-.ca-badge--alert {
-  background-color: var(--ca-status-alert-bg);
-  color: var(--ca-status-alert);
-  border-color: var(--ca-status-alert-border);
-}
-.ca-badge--alert::before { background-color: var(--ca-status-alert); }
-
-.ca-badge--danger {
-  background-color: var(--ca-status-danger-bg);
-  color: var(--ca-status-danger);
-  border-color: var(--ca-status-danger-border);
-}
-.ca-badge--danger::before {
-  background-color: var(--ca-status-danger);
-  box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.7);
-  animation: ca-pulse 1.8s infinite;
-}
-
-@keyframes ca-pulse {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.6); }
-  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(185, 28, 28, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(185, 28, 28, 0); }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-reckless);
+  color: var(--color-charcoal);
 }
 
 /* ==========================================================================
-   COMPONENTES: BOTÕES (BUTTONS)
+   COMPONENTES: BOTÕES (BUTTONS) - Padrão Pill 100px
    ========================================================================== */
-.ca-btn {
+.btn-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 20px;
-  min-height: 44px;
-  font-family: var(--ca-font-sans);
-  font-size: 0.9375rem;
+  gap: var(--spacing-8);
+  padding: var(--spacing-10) var(--spacing-24);
+  font-family: var(--font-inter);
+  font-size: var(--text-body-sm);
   font-weight: 600;
-  border-radius: var(--ca-radius-sm);
-  border: 1px solid transparent;
+  letter-spacing: var(--tracking-body-sm);
+  border-radius: var(--radius-buttons);
   cursor: pointer;
-  transition: var(--ca-transition);
   text-decoration: none;
-}
-
-.ca-btn--primary {
-  background-color: var(--ca-brand-primary);
-  color: #FFFFFF;
-  box-shadow: var(--ca-shadow-sm);
-}
-.ca-btn--primary:hover {
-  background-color: var(--ca-brand-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--ca-shadow-md);
-}
-.ca-btn--primary:active {
-  transform: translateY(0);
-}
-
-.ca-btn--secondary {
-  background-color: var(--ca-bg-subtle);
-  color: var(--ca-text-main);
-  border-color: var(--ca-border-light);
-}
-.ca-btn--secondary:hover {
-  background-color: #E3E7E2;
-  border-color: var(--ca-border-medium);
-}
-
-.ca-btn--outline {
-  background-color: transparent;
-  color: var(--ca-brand-primary);
-  border-color: var(--ca-brand-primary);
-}
-.ca-btn--outline:hover {
-  background-color: var(--ca-brand-light);
-}
-
-/* ==========================================================================
-   COMPONENTES: CARDS DE MÉTRICA (KPIs)
-   ========================================================================== */
-.ca-kpi-card {
-  background: var(--ca-bg-surface);
-  border: 1px solid var(--ca-border-light);
-  border-radius: var(--ca-radius-md);
-  padding: var(--ca-space-lg);
-  box-shadow: var(--ca-shadow-sm);
-  display: flex;
-  align-items: flex-start;
-  gap: var(--ca-space-md);
-  transition: var(--ca-transition);
-}
-.ca-kpi-card:hover {
-  box-shadow: var(--ca-shadow-md);
-  border-color: var(--ca-border-medium);
-}
-
-.ca-kpi-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--ca-radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  flex-shrink: 0;
-}
-.ca-kpi-icon--green { background: var(--ca-brand-light); color: var(--ca-brand-primary); }
-.ca-kpi-icon--blue  { background: var(--ca-status-hydro-bg); color: var(--ca-status-hydro); }
-.ca-kpi-icon--amber { background: var(--ca-status-warn-bg); color: var(--ca-status-warn); }
-.ca-kpi-icon--red   { background: var(--ca-status-danger-bg); color: var(--ca-status-danger); }
-
-.ca-kpi-label {
-  font-size: 0.8125rem;
-  font-weight: 600;
+  transition: opacity 0.2s;
   text-transform: uppercase;
-  color: var(--ca-text-muted);
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
 }
 
-.ca-kpi-value {
-  font-family: var(--ca-font-display);
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--ca-text-main);
-  line-height: 1.1;
+.btn-pill--primary {
+  background-color: var(--color-forest-ink);
+  color: var(--color-pure-white);
+  border: none;
 }
 
-/* ==========================================================================
-   COMPONENTES: FORMULÁRIOS DE CAMPO
-   ========================================================================== */
-.ca-form-group {
-  margin-bottom: var(--ca-space-md);
+.btn-pill--primary:hover {
+  opacity: 0.9;
 }
 
-.ca-label {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--ca-text-main);
-  margin-bottom: 6px;
+.btn-pill--ghost {
+  background-color: transparent;
+  color: var(--color-pure-white);
+  border: 1px solid var(--color-pure-white);
 }
 
-.ca-input, .ca-select, .ca-textarea {
-  width: 100%;
-  padding: 10px 14px;
-  min-height: 44px;
-  font-family: var(--ca-font-sans);
-  font-size: 0.9375rem;
-  color: var(--ca-text-main);
-  background-color: var(--ca-bg-surface);
-  border: 1px solid var(--ca-border-light);
-  border-radius: var(--ca-radius-sm);
-  transition: var(--ca-transition);
-  outline: none;
+.btn-pill--ghost:hover {
+  background-color: rgba(255,255,255,0.1);
 }
 
-.ca-input:focus, .ca-select:focus, .ca-textarea:focus {
-  border-color: var(--ca-brand-primary);
-  box-shadow: 0 0 0 3px rgba(22, 78, 46, 0.12);
-}
-
-.ca-textarea {
-  min-height: 88px;
-  resize: vertical;
-}
-
-/* ==========================================================================
-   COMPONENTES: CARD DE REGISTRO DE CAMPO
-   ========================================================================== */
-.ca-record-card {
-  background: var(--ca-bg-surface);
-  border: 1px solid var(--ca-border-light);
-  border-radius: var(--ca-radius-md);
-  padding: var(--ca-space-md) var(--ca-space-lg);
-  box-shadow: var(--ca-shadow-sm);
-  transition: var(--ca-transition);
-}
-.ca-record-card:hover {
-  border-color: var(--ca-brand-primary);
-  box-shadow: var(--ca-shadow-md);
+.btn-pill--dark-ghost {
+  background-color: transparent;
+  color: var(--color-charcoal);
+  border: 1px solid var(--color-charcoal);
 }

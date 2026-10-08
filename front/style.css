@@ -1,0 +1,426 @@
+/* ==========================================================================
+   CONECTA AGRO — ESTILOS DA APLICAÇÃO (ARVA THEME)
+   ========================================================================== */
+
+@import url('../design-system.css');
+
+/* ==========================================================================
+   BASE & LAYOUT
+   ========================================================================== */
+.arva-app {
+  background-color: var(--color-bone);
+  min-height: 100vh;
+}
+
+.arva-container {
+  max-width: var(--page-max-width, 1200px);
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.arva-header {
+  background-color: var(--color-forest-ink);
+  color: var(--color-pure-white);
+  padding: 0 40px;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+}
+
+.arva-header__inner {
+  width: 100%;
+  max-width: var(--page-max-width, 1200px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arva-brand {
+  font-family: var(--font-reckless);
+  font-size: 24px;
+  color: var(--color-pure-white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.arva-brand__icon {
+  color: var(--color-vivid-lime);
+}
+
+.arva-brand__sub {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  color: var(--color-moss);
+  margin-left: 6px;
+  font-weight: 400;
+}
+
+.arva-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.arva-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-inter);
+  font-size: 13px;
+  color: var(--color-moss);
+}
+
+.arva-status__dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-vivid-lime);
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   KPI QUILTED CARDS
+   ========================================================================== */
+.arva-section {
+  margin-bottom: 50px;
+}
+
+.arva-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.arva-card {
+  border-radius: var(--radius-cards);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quilt-sky { background-color: var(--color-sky-card); }
+.quilt-peach { background-color: var(--color-peach-card); }
+.quilt-sage { background-color: var(--color-sage-card); }
+.quilt-bone { background-color: var(--color-ash-gray); }
+
+.kpi-header {
+  margin-bottom: 20px;
+}
+.kpi-icon {
+  font-size: 24px;
+}
+
+.kpi-value {
+  font-family: var(--font-reckless);
+  font-size: 45px;
+  line-height: 1;
+  color: var(--color-charcoal);
+  margin-bottom: 8px;
+}
+
+.kpi-label {
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-graphite);
+}
+
+/* ==========================================================================
+   ÁREA PRINCIPAL (2 COLUNAS)
+   ========================================================================== */
+.arva-main-grid {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 1024px) {
+  .arva-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.arva-panel {
+  background-color: var(--color-pure-white);
+  border-radius: var(--radius-cards);
+  padding: 32px;
+}
+
+.panel-header {
+  margin-bottom: 30px;
+}
+
+.panel-title {
+  font-family: var(--font-reckless);
+  font-size: var(--text-heading-sm);
+  color: var(--color-charcoal);
+  line-height: 1.2;
+}
+
+.panel-subtitle {
+  font-family: var(--font-inter);
+  font-size: 15px;
+  color: var(--color-pewter);
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   FORMULÁRIOS & INPUTS (PILL FORMAT)
+   ========================================================================== */
+.arva-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-graphite);
+  margin-bottom: 8px;
+}
+.req { color: #d94b4b; }
+
+.pill-input {
+  width: 100%;
+  border: 1px solid var(--color-moss);
+  border-radius: var(--radius-inputs);
+  padding: 12px 20px;
+  font-family: var(--font-inter);
+  font-size: 15px;
+  color: var(--color-charcoal);
+  background-color: var(--color-pure-white);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.pill-input:focus {
+  border-color: var(--color-forest-ink);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+  border-radius: 20px; /* Um pouco menos extremo para áreas de texto grandes */
+}
+
+.input-affix {
+  position: relative;
+}
+.affix-text {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-inter);
+  font-size: 13px;
+  color: var(--color-pewter);
+  pointer-events: none;
+}
+
+/* Segmented Pills (Radio) */
+.segmented-pills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.pill-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-moss);
+  border-radius: var(--radius-inputs);
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pill-radio input { display: none; }
+.pill-radio:hover { background-color: var(--color-bone); }
+
+.pill-radio:has(input:checked) {
+  border-width: 2px;
+}
+.pill-safe:has(input:checked) { background: #dcfce7; border-color: #15803d; color: #15803d; }
+.pill-warn:has(input:checked) { background: #fef9c3; border-color: #b45309; color: #b45309; }
+.pill-alert:has(input:checked) { background: #ffedd5; border-color: #c2410c; color: #c2410c; }
+.pill-danger:has(input:checked) { background: #fee2e2; border-color: #b91c1c; color: #b91c1c; }
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   HISTÓRICO & FILTROS
+   ========================================================================== */
+.filter-bar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.search-box {
+  position: relative;
+  flex: 1;
+}
+.btn-clear {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-pewter);
+}
+
+.select-filter {
+  max-width: 180px;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Compatibilidade com o app.js original que insere cards */
+.ca-record-item {
+  border: 1px solid var(--color-moss);
+  border-radius: var(--radius-cards);
+  padding: 24px;
+  background-color: var(--color-pure-white);
+}
+
+.ca-record-item__field {
+  font-family: var(--font-reckless);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+
+.ca-record-item__crop {
+  font-family: var(--font-inter);
+  font-size: 13px;
+  color: var(--color-graphite);
+  margin-top: 4px;
+  display: block;
+}
+
+.ca-record-metrics-row {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.ca-metric-chip {
+  padding: 6px 12px;
+  background-color: var(--color-bone);
+  border-radius: var(--radius-inputs);
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.ca-record-obs-box {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  color: var(--color-pewter);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.ca-record-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed var(--color-moss);
+  padding-top: 16px;
+}
+
+.ca-btn-delete {
+  background: none;
+  border: none;
+  color: #b91c1c;
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ca-badge {
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-family: var(--font-inter);
+  font-weight: 600;
+}
+.ca-badge--safe { background: #dcfce7; color: #15803d; }
+.ca-badge--warn { background: #fef9c3; color: #b45309; }
+.ca-badge--alert { background: #ffedd5; color: #c2410c; }
+.ca-badge--danger { background: #fee2e2; color: #b91c1c; }
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  background-color: var(--color-bone);
+  border-radius: var(--radius-cards);
+}
+.empty-title {
+  font-family: var(--font-reckless);
+  font-size: 24px;
+  color: var(--color-charcoal);
+}
+.empty-desc {
+  font-family: var(--font-inter);
+  font-size: 15px;
+  color: var(--color-pewter);
+  margin-top: 8px;
+}
+
+/* Toast */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ca-toast {
+  background-color: var(--color-pure-white);
+  border: 1px solid var(--color-moss);
+  border-radius: var(--radius-cards);
+  padding: 16px 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  font-family: var(--font-inter);
+  font-size: 14px;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

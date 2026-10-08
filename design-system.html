@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conecta Agro — Design System (Raiz & Precisão)</title>
+  <title>Conecta Agro — Design System Showcase</title>
   <link rel="stylesheet" href="design-system.css">
   <style>
-    /* Estilos específicos para a vitrine do Design System */
+    /* Estilos específicos para a vitrine do Design System Arva */
     .ds-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -14,80 +14,50 @@
     }
 
     .ds-hero {
-      background: linear-gradient(135deg, #0D2818 0%, #164E2E 60%, #227C4B 100%);
-      color: #FFFFFF;
-      padding: 48px 36px;
+      background-color: var(--color-forest-ink);
+      color: var(--color-pure-white);
+      padding: 80px 40px;
       border-radius: var(--ca-radius-lg);
       margin-bottom: 48px;
-      box-shadow: var(--ca-shadow-lg);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ds-hero::after {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(46, 196, 117, 0.25) 0%, rgba(46, 196, 117, 0) 70%);
-      border-radius: 50%;
+      text-align: center;
     }
 
     .ds-hero-badge {
       display: inline-block;
       padding: 6px 14px;
       background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
       border-radius: var(--ca-radius-full);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 13px;
+      font-family: var(--font-inter);
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
     .ds-hero-title {
-      font-family: var(--ca-font-display);
-      font-size: 2.5rem;
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 12px;
+      font-family: var(--font-reckless);
+      font-size: var(--text-display);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 24px;
       letter-spacing: -0.02em;
     }
 
-    .ds-hero-subtitle {
-      font-size: 1.125rem;
-      color: #D3E7DA;
-      max-width: 680px;
-      line-height: 1.6;
-    }
-
     .ds-section {
-      margin-bottom: 56px;
+      margin-bottom: 60px;
     }
 
     .ds-section-header {
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--ca-border-light);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--color-moss);
+      padding-bottom: 16px;
     }
 
     .ds-section-title {
-      font-family: var(--ca-font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--ca-brand-deep);
-    }
-
-    .ds-section-desc {
-      font-size: 0.875rem;
-      color: var(--ca-text-muted);
-      margin-top: 4px;
+      font-family: var(--font-reckless);
+      font-size: var(--text-heading);
+      font-weight: 500;
+      color: var(--color-charcoal);
     }
 
     /* Grid de Cores */
@@ -95,49 +65,44 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 16px;
+      margin-bottom: 30px;
     }
 
     .ds-swatch {
-      background: var(--ca-bg-surface);
-      border: 1px solid var(--ca-border-light);
-      border-radius: var(--ca-radius-md);
+      border-radius: var(--radius-cards);
       overflow: hidden;
-      box-shadow: var(--ca-shadow-sm);
-      transition: var(--ca-transition);
-    }
-    .ds-swatch:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--ca-shadow-md);
+      display: flex;
+      flex-direction: column;
     }
 
     .ds-swatch-color {
-      height: 80px;
+      height: 100px;
       width: 100%;
+      border: 1px solid rgba(0,0,0,0.05);
     }
 
     .ds-swatch-info {
-      padding: 12px 14px;
+      padding: 16px;
+      background-color: var(--color-pure-white);
+      border: 1px solid var(--color-moss);
+      border-top: none;
+      border-bottom-left-radius: var(--radius-cards);
+      border-bottom-right-radius: var(--radius-cards);
     }
 
     .ds-swatch-name {
-      font-weight: 700;
-      font-size: 0.875rem;
-      color: var(--ca-text-main);
-    }
-
-    .ds-swatch-meta {
-      font-size: 0.75rem;
-      color: var(--ca-text-muted);
-      font-family: monospace;
-      margin-top: 4px;
+      font-family: var(--font-inter);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--color-charcoal);
     }
 
     /* Grid de Tipografia */
     .ds-type-specimen {
-      background: var(--ca-bg-surface);
-      border: 1px solid var(--ca-border-light);
-      border-radius: var(--ca-radius-md);
-      padding: 24px;
+      background-color: var(--color-pure-white);
+      border: 1px solid var(--color-moss);
+      border-radius: var(--radius-cards);
+      padding: 30px;
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -147,7 +112,7 @@
       display: flex;
       align-items: baseline;
       padding-bottom: 16px;
-      border-bottom: 1px dashed var(--ca-border-light);
+      border-bottom: 1px dashed var(--color-moss);
       gap: 24px;
     }
     .ds-type-row:last-child {
@@ -156,433 +121,169 @@
     }
 
     .ds-type-tag {
-      font-family: monospace;
-      font-size: 0.75rem;
-      color: var(--ca-text-light);
-      width: 140px;
+      font-family: var(--font-inter);
+      font-size: 12px;
+      color: var(--color-pewter);
+      width: 180px;
       flex-shrink: 0;
+      text-transform: uppercase;
+      font-weight: 600;
     }
 
-    /* Showcase Layout */
-    .ds-interactive-grid {
+    /* Botoes e Inputs */
+    .ds-component-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
     }
 
-    @media (max-width: 900px) {
-      .ds-interactive-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .ds-card-box {
-      background: var(--ca-bg-surface);
-      border: 1px solid var(--ca-border-light);
-      border-radius: var(--ca-radius-md);
-      padding: 24px;
-      box-shadow: var(--ca-shadow-sm);
+      background-color: var(--color-pure-white);
+      border: 1px solid var(--color-moss);
+      border-radius: var(--radius-cards);
+      padding: 30px;
     }
 
-    .ds-card-box-title {
-      font-family: var(--ca-font-display);
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: var(--ca-brand-deep);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .ds-form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .ds-tag-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .ds-card-title {
+      font-family: var(--font-reckless);
+      font-size: var(--text-subheading);
+      color: var(--color-charcoal);
       margin-bottom: 20px;
     }
 
-    .ds-btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
+    .ds-input-demo {
+      width: 100%;
+      border: 1px solid var(--color-moss);
+      border-radius: var(--radius-inputs);
+      padding: 12px 20px;
+      font-family: var(--font-inter);
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 16px;
+    }
+    .ds-input-demo:focus {
+      border-color: var(--color-forest-ink);
     }
 
-    /* Card de Histórico Amostra */
-    .ds-sample-record {
-      border: 1px solid var(--ca-border-light);
-      border-radius: var(--ca-radius-md);
-      padding: 16px 20px;
-      margin-bottom: 14px;
-      background: #FFFFFF;
-      transition: var(--ca-transition);
-    }
-    .ds-sample-record:hover {
-      border-color: var(--ca-brand-primary);
-      box-shadow: var(--ca-shadow-sm);
-    }
-
-    .ds-record-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 10px;
-    }
-
-    .ds-record-title {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--ca-text-main);
-    }
-
-    .ds-record-crop {
-      font-size: 0.8125rem;
-      color: var(--ca-earth-terra);
-      font-weight: 600;
-    }
-
-    .ds-record-stats {
-      display: flex;
-      gap: 16px;
-      padding: 10px 14px;
-      background: var(--ca-bg-subtle);
-      border-radius: var(--ca-radius-sm);
-      margin-bottom: 10px;
-    }
-
-    .ds-stat-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.875rem;
-      font-weight: 600;
-    }
-
-    .ds-record-obs {
-      font-size: 0.8125rem;
-      color: var(--ca-text-muted);
-      line-height: 1.4;
-    }
   </style>
 </head>
 <body>
 
   <div class="ds-container">
-
-    <!-- HERO HEADER -->
+    
     <header class="ds-hero">
-      <span class="ds-hero-badge">Design System v1.0 • Oficial</span>
-      <h1 class="ds-hero-title">Conecta Agro — Raiz & Precisão</h1>
-      <p class="ds-hero-subtitle">
-        A união da solidez orgânica da terra com a acurácia cirúrgica dos dados agronômicos. 
-        Projetado especificamente para legibilidade sob sol forte, agilidade tátil no campo e decisões fitossanitárias imediatas.
+      <span class="ds-hero-badge">Vitrine Oficial • v2.0</span>
+      <h1 class="ds-hero-title">Estilo Editorial Pastoral</h1>
+      <p style="font-family: var(--font-inter); font-size: 16px; max-width: 600px; margin: 0 auto;">
+        Componentes baseados no guia de estilo "Arva". Fundo Bone, formatos de pílula arredondada, e contraste com Forest Ink e tons pastéis quentes.
       </p>
     </header>
 
-    <!-- SECTION 1: KPIS DE CAMPO -->
+    <!-- CORES E SUPERFÍCIES -->
     <section class="ds-section">
       <div class="ds-section-header">
-        <div>
-          <h2 class="ds-section-title">1. Painel de Métricas Rápidas (KPIs de Campo)</h2>
-          <p class="ds-section-desc">Visão instantânea das condições gerais da lavoura para o produtor rural.</p>
+        <h2 class="ds-section-title">Paleta e Superfícies (Tokens)</h2>
+      </div>
+
+      <div class="ds-color-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background-color: var(--color-forest-ink);"></div>
+          <div class="ds-swatch-info"><div class="ds-swatch-name">Forest Ink</div></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background-color: var(--color-vivid-lime);"></div>
+          <div class="ds-swatch-info"><div class="ds-swatch-name">Vivid Lime</div></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background-color: var(--color-bone);"></div>
+          <div class="ds-swatch-info"><div class="ds-swatch-name">Bone Canvas</div></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background-color: var(--color-pure-white);"></div>
+          <div class="ds-swatch-info"><div class="ds-swatch-name">Pure White</div></div>
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-        <!-- Card 1 -->
-        <div class="ca-kpi-card">
-          <div class="ca-kpi-icon ca-kpi-icon--green">🌱</div>
-          <div>
-            <div class="ca-kpi-label">Total Medições</div>
-            <div class="ca-kpi-value">18</div>
-          </div>
+      <h3 style="font-family: var(--font-inter); font-size: 14px; margin-bottom: 12px; color: var(--color-charcoal); text-transform: uppercase;">Quilted Pastel Cards</h3>
+      <div class="ds-color-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background-color: var(--color-sky-card);"></div>
+          <div class="ds-swatch-info"><div class="ds-swatch-name">Sky Card</div></div>
         </div>
-
-        <!-- Card 2 -->
-        <div class="ca-kpi-card">
-          <div class="ca-kpi-icon ca-kpi-icon--blue">💧</div>
-          <div>
-            <div class="ca-kpi-label">Umidade Média</div>
-            <div class="ca-kpi-value">34.2<span style="font-size: 1rem; color: var(--ca-text-muted);">%</span></div>
-          </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background-color: var(--color-peach-card);"></div>
+          <div class="ds-swatch-info"><div class="ds-swatch-name">Peach Card</div></div>
         </div>
-
-        <!-- Card 3 -->
-        <div class="ca-kpi-card">
-          <div class="ca-kpi-icon ca-kpi-icon--amber">🌡️</div>
-          <div>
-            <div class="ca-kpi-label">Temp. Média</div>
-            <div class="ca-kpi-value">29.8<span style="font-size: 1rem; color: var(--ca-text-muted);">°C</span></div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="ca-kpi-card">
-          <div class="ca-kpi-icon ca-kpi-icon--red">⚠️</div>
-          <div>
-            <div class="ca-kpi-label">Talhões em Alerta</div>
-            <div class="ca-kpi-value">3</div>
-          </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-color" style="background-color: var(--color-sage-card);"></div>
+          <div class="ds-swatch-info"><div class="ds-swatch-name">Sage Card</div></div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: PALETA DE CORES -->
+    <!-- TIPOGRAFIA -->
     <section class="ds-section">
       <div class="ds-section-header">
-        <div>
-          <h2 class="ds-section-title">2. Paleta de Cores e Semântica de Campo</h2>
-          <p class="ds-section-desc">Tons inspirados na lavoura viva, terra fértil e cores universais de risco agronômico.</p>
-        </div>
-      </div>
-
-      <h3 style="font-size: 1rem; color: var(--ca-brand-primary); margin-bottom: 12px;">2.1 Vitalidade da Lavoura (Verdes Primários)</h3>
-      <div class="ds-color-grid" style="margin-bottom: 24px;">
-        <div class="ds-swatch">
-          <div class="ds-swatch-color" style="background-color: var(--ca-brand-deep);"></div>
-          <div class="ds-swatch-info">
-            <div class="ds-swatch-name">Deep Canopy</div>
-            <div class="ds-swatch-meta">#0D2818 • Alto Contraste</div>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch-color" style="background-color: var(--ca-brand-primary);"></div>
-          <div class="ds-swatch-info">
-            <div class="ds-swatch-name">Forest Prime</div>
-            <div class="ds-swatch-meta">#164E2E • Botão Primário</div>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch-color" style="background-color: var(--ca-brand-hover);"></div>
-          <div class="ds-swatch-info">
-            <div class="ds-swatch-name">Agro Leaf</div>
-            <div class="ds-swatch-meta">#227C4B • Hover / Borda</div>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch-color" style="background-color: var(--ca-brand-accent);"></div>
-          <div class="ds-swatch-info">
-            <div class="ds-swatch-name">Sprout Green</div>
-            <div class="ds-swatch-meta">#2EC475 • Acento / Sucesso</div>
-          </div>
-        </div>
-      </div>
-
-      <h3 style="font-size: 1rem; color: var(--ca-earth-rich); margin-bottom: 12px;">2.2 Terra, Safra & Grãos (Tons Orgânicos Secundários)</h3>
-      <div class="ds-color-grid" style="margin-bottom: 24px;">
-        <div class="ds-swatch">
-          <div class="ds-swatch-color" style="background-color: var(--ca-earth-rich);"></div>
-          <div class="ds-swatch-info">
-            <div class="ds-swatch-name">Rich Clay</div>
-            <div class="ds-swatch-meta">#6E4032 • Solo Fértil</div>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch-color" style="background-color: var(--ca-earth-terra);"></div>
-          <div class="ds-swatch-info">
-            <div class="ds-swatch-name">Terracotta</div>
-            <div class="ds-swatch-meta">#A85A3F • Destaque Terroso</div>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch-color" style="background-color: var(--ca-harvest-gold);"></div>
-          <div class="ds-swatch-info">
-            <div class="ds-swatch-name">Wheat Amber</div>
-            <div class="ds-swatch-meta">#D97706 • Trigo & Safra</div>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch-color" style="background-color: var(--ca-harvest-light); border: 1px solid var(--ca-border-light);"></div>
-          <div class="ds-swatch-info">
-            <div class="ds-swatch-name">Pale Straw</div>
-            <div class="ds-swatch-meta">#FEF3C7 • Fundo Destaque</div>
-          </div>
-        </div>
-      </div>
-
-      <h3 style="font-size: 1rem; color: var(--ca-status-danger); margin-bottom: 12px;">2.3 Status Fitossanitário & Alertas de Ronda</h3>
-      <div class="ds-tag-group">
-        <span class="ca-badge ca-badge--safe">Normal (Sem Pragas)</span>
-        <span class="ca-badge ca-badge--warn">Atenção (Risco Baixo)</span>
-        <span class="ca-badge ca-badge--alert">Alerta (Risco Médio)</span>
-        <span class="ca-badge ca-badge--danger">Crítico (Ataque Severo)</span>
-      </div>
-    </section>
-
-    <!-- SECTION 3: COMPONENTES INTERATIVOS DE CAMPO -->
-    <section class="ds-section">
-      <div class="ds-section-header">
-        <div>
-          <h2 class="ds-section-title">3. Componentes de Interface & Interação</h2>
-          <p class="ds-section-desc">Demonstração viva do formulário de entrada e do histórico de medições.</p>
-        </div>
-      </div>
-
-      <div class="ds-interactive-grid">
-        
-        <!-- COLUNA 1: FORMULÁRIO DE MEDIÇÃO -->
-        <div class="ds-card-box">
-          <h3 class="ds-card-box-title">📝 Nova Medição de Campo</h3>
-          
-          <form onsubmit="event.preventDefault(); alert('Registro de teste validado pelo Design System!');">
-            <div class="ds-form-row">
-              <div class="ca-form-group">
-                <label class="ca-label">Data e Hora da Ronda</label>
-                <input type="datetime-local" class="ca-input" value="2026-10-07T11:30">
-              </div>
-              <div class="ca-form-group">
-                <label class="ca-label">Talhão / Lote</label>
-                <input type="text" class="ca-input" placeholder="Ex: Talhão 04 - Norte" value="Talhão 04 - Setor Norte">
-              </div>
-            </div>
-
-            <div class="ds-form-row">
-              <div class="ca-form-group">
-                <label class="ca-label">Cultura / Variedade</label>
-                <input type="text" class="ca-input" placeholder="Ex: Milho Safrinha" value="Milho Safrinha DKB">
-              </div>
-              <div class="ca-form-group">
-                <label class="ca-label">Umidade do Solo (%)</label>
-                <input type="number" class="ca-input" placeholder="0 a 100%" value="28">
-              </div>
-            </div>
-
-            <div class="ds-form-row">
-              <div class="ca-form-group">
-                <label class="ca-label">Temperatura (°C)</label>
-                <input type="number" step="0.1" class="ca-input" placeholder="°C" value="31.5">
-              </div>
-              <div class="ca-form-group">
-                <label class="ca-label">Nível de Pragas / Doenças</label>
-                <select class="ca-select">
-                  <option value="safe">Normal / Nenhuma</option>
-                  <option value="warn">Atenção (Baixo)</option>
-                  <option value="alert" selected>Alerta (Médio)</option>
-                  <option value="danger">Crítico (Alto)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="ca-form-group">
-              <label class="ca-label">Observações e Ações Recomendadas</label>
-              <textarea class="ca-textarea" placeholder="Descreva anotações fitossanitárias...">Presença inicial de lagarta do cartucho na bordadura leste; recomendado monitoramento diário e avaliação para pulverização seletiva.</textarea>
-            </div>
-
-            <div class="ds-btn-group">
-              <button type="submit" class="ca-btn ca-btn--primary">💾 Salvar Medição</button>
-              <button type="reset" class="ca-btn ca-btn--secondary">🔄 Limpar Campos</button>
-            </div>
-          </form>
-        </div>
-
-        <!-- COLUNA 2: LISTA DE HISTÓRICO DE MEDIÇÕES -->
-        <div class="ds-card-box">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <h3 class="ds-card-box-title" style="margin-bottom: 0;">📋 Registros Recentes</h3>
-            <span style="font-size: 0.8125rem; color: var(--ca-text-muted);">3 amostras</span>
-          </div>
-
-          <!-- Registro 1 (Alerta Médio) -->
-          <div class="ds-sample-record">
-            <div class="ds-record-top">
-              <div>
-                <div class="ds-record-title">Talhão 04 - Setor Norte</div>
-                <div class="ds-record-crop">Milho Safrinha DKB</div>
-              </div>
-              <span class="ca-badge ca-badge--alert">Alerta (Médio)</span>
-            </div>
-            <div class="ds-record-stats">
-              <div class="ds-stat-item" style="color: var(--ca-status-hydro);">💧 28% Solo</div>
-              <div class="ds-stat-item" style="color: var(--ca-earth-rich);">🌡️ 31.5°C</div>
-              <div class="ds-stat-item" style="color: var(--ca-text-muted); font-size: 0.75rem; margin-left: auto;">Hoje, 11:30</div>
-            </div>
-            <p class="ds-record-obs">Presença inicial de lagarta do cartucho na bordadura leste; monitorar seletivamente.</p>
-          </div>
-
-          <!-- Registro 2 (Normal) -->
-          <div class="ds-sample-record">
-            <div class="ds-record-top">
-              <div>
-                <div class="ds-record-title">Talhão 01 - Baixada</div>
-                <div class="ds-record-crop">Soja Intacta BMX</div>
-              </div>
-              <span class="ca-badge ca-badge--safe">Normal</span>
-            </div>
-            <div class="ds-record-stats">
-              <div class="ds-stat-item" style="color: var(--ca-status-hydro);">💧 42% Solo</div>
-              <div class="ds-stat-item" style="color: var(--ca-earth-rich);">🌡️ 27.2°C</div>
-              <div class="ds-stat-item" style="color: var(--ca-text-muted); font-size: 0.75rem; margin-left: auto;">Hoje, 09:15</div>
-            </div>
-            <p class="ds-record-obs">Boa umidade após irrigação noturna. Folhagem saudável sem sinais de pragas.</p>
-          </div>
-
-          <!-- Registro 3 (Crítico com pulso animado) -->
-          <div class="ds-sample-record" style="border-left: 4px solid var(--ca-status-danger);">
-            <div class="ds-record-top">
-              <div>
-                <div class="ds-record-title">Talhão 08 - Colina Sul</div>
-                <div class="ds-record-crop">Café Arábica Catuaí</div>
-              </div>
-              <span class="ca-badge ca-badge--danger">Crítico</span>
-            </div>
-            <div class="ds-record-stats">
-              <div class="ds-stat-item" style="color: var(--ca-status-hydro);">💧 18% Solo</div>
-              <div class="ds-stat-item" style="color: var(--ca-earth-rich);">🌡️ 34.0°C</div>
-              <div class="ds-stat-item" style="color: var(--ca-text-muted); font-size: 0.75rem; margin-left: auto;">Ontem, 16:40</div>
-            </div>
-            <p class="ds-record-obs">Estresse hídrico severo e manchas de bicho-mineiro em expansão. Irrigação emergencial requisitada.</p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 4: TIPOGRAFIA -->
-    <section class="ds-section">
-      <div class="ds-section-header">
-        <div>
-          <h2 class="ds-section-title">4. Tipografia & Hierarquia</h2>
-          <p class="ds-section-desc">Outfit (Títulos & Destaques de Marca) + Plus Jakarta Sans (Interface & Dados Tabulares).</p>
-        </div>
+        <h2 class="ds-section-title">Tipografia Editorial</h2>
       </div>
 
       <div class="ds-type-specimen">
         <div class="ds-type-row">
-          <span class="ds-type-tag">Outfit / Display 32px</span>
-          <span style="font-family: var(--ca-font-display); font-size: 2rem; font-weight: 800; color: var(--ca-brand-deep);">
-            Conecta Agro — Monitoramento Inteligente
+          <span class="ds-type-tag">Reckless (Cormorant) / Display 80px</span>
+          <span style="font-family: var(--font-reckless); font-size: var(--text-display); font-weight: 300; line-height: 1;">
+            O Campo em Dados
           </span>
         </div>
         <div class="ds-type-row">
-          <span class="ds-type-tag">Outfit / H1 24px</span>
-          <span style="font-family: var(--ca-font-display); font-size: 1.5rem; font-weight: 700; color: var(--ca-brand-primary);">
-            Registro de Medições & Observações de Campo
+          <span class="ds-type-tag">Reckless (Cormorant) / H2 45px</span>
+          <span style="font-family: var(--font-reckless); font-size: var(--text-heading); font-weight: 500;">
+            Parceiros e Produtores
           </span>
         </div>
         <div class="ds-type-row">
-          <span class="ds-type-tag">Plus Jakarta / Body 15px</span>
-          <span style="font-family: var(--ca-font-sans); font-size: 0.9375rem; color: var(--ca-text-main); line-height: 1.6;">
-            Acompanhe a umidade do solo e a temperatura de cada talhão em tempo real, eliminando a dependência de anotações manuais em cadernos vulneráveis a perdas.
+          <span class="ds-type-tag">Inter / Body 16px</span>
+          <span style="font-family: var(--font-inter); font-size: 16px; font-weight: 400; max-width: 60ch;">
+            A fonte Inter substitui a tipografia sem serifa genérica com um toque minimalista perfeito para leitura prolongada, complementando a pegada editorial literária do cabeçalho.
           </span>
         </div>
         <div class="ds-type-row">
-          <span class="ds-type-tag">Tabular Metric 28px</span>
-          <span style="font-family: var(--ca-font-display); font-size: 1.75rem; font-weight: 700; color: var(--ca-status-hydro);">
-            💧 38.5% <span style="font-size: 1rem; font-weight: 500; color: var(--ca-text-muted);">| 🌡️ 32.1°C</span>
+          <span class="ds-type-tag">Inter / UI Botões 14px</span>
+          <span style="font-family: var(--font-inter); font-size: 14px; font-weight: 600; text-transform: uppercase;">
+            Acessar Sistema
           </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTES -->
+    <section class="ds-section">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Componentes Amigáveis (Pill Format)</h2>
+      </div>
+
+      <div class="ds-component-grid">
+        <div class="ds-card-box">
+          <h3 class="ds-card-title">Botões de Ação</h3>
+          <p style="font-size: 14px; margin-bottom: 20px; font-family: var(--font-inter);">
+            Utilizam sempre 100px de raio de borda para manter o formato orgânico de pílula.
+          </p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <button class="btn-pill btn-pill--primary">Primary Action</button>
+            <button class="btn-pill btn-pill--dark-ghost">Secondary Action</button>
+          </div>
+        </div>
+
+        <div class="ds-card-box">
+          <h3 class="ds-card-title">Campos de Entrada</h3>
+          <p style="font-size: 14px; margin-bottom: 20px; font-family: var(--font-inter);">
+            Inputs arredondados (33px) com bordas suaves e foco claro.
+          </p>
+          <input type="text" class="ds-input-demo" placeholder="Nome do Talhão">
+          <input type="number" class="ds-input-demo" placeholder="Umidade (%)">
         </div>
       </div>
     </section>
 
   </div>
-
 </body>
 </html>
